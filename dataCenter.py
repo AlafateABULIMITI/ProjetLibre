@@ -1,3 +1,4 @@
+# classe pour integrer
 class DataCenter:
 
     def cleanData(self, dataFrame):
