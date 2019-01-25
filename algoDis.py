@@ -1,7 +1,7 @@
 import numpy as np
 import Levenshtein as ls
 
-# classe pour calculer les distances
+
 class AlgoDis:
 
     def deleteNull(self, data1, data2):
