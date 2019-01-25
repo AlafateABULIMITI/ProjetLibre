@@ -3,6 +3,19 @@ import Levenshtein as ls
 
 # classe pour calculer les distances
 class AlgoDis:
+
+    def deleteNull(self, data1, data2):
+        data1_no_null = []
+        data2_no_null = []
+        for d1, d2 in data1, data2:
+            if d1 == None or d2 == None:
+                continue
+            else:
+                data1_no_null.append(d1)
+                data2_no_null.append(d2)
+
+        return data1_no_null, data2_no_null
+
     def selectNumeric(self, data):
         data_num = []
         for d in data:
@@ -20,6 +33,8 @@ class AlgoDis:
         return data_str
 
     def euclideanDistance(self, data1, data2):
+
+        data1, data2 = self.deleteNull(data1,data2)
         data1 = self.selectNumeric(data1)
         data2 = self.selectNumeric(data2)
 
