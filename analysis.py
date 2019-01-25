@@ -36,7 +36,7 @@ import connDB
 #     df['quantity(g)'] = df['quantity(g)'].astype(float)
 
 
-
+# Main execution
 if __name__ == "__main__":
     # file = 'en.openfoodfacts.org.products.csv'
     # df = pd.DataFrame()

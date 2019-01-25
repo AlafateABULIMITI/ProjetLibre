@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import pandas as pd
 
-
+# classe pour connecter avec BD
 class ConnDB:
 
     def connect_mongo(self, host, port, username, password, db):

@@ -1,7 +1,7 @@
 import numpy as np
 import Levenshtein as ls
 
-
+# classe pour calculer les distances
 class AlgoDis:
     def selectNumeric(self, data):
         data_num = []
