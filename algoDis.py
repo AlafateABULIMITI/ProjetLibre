@@ -8,7 +8,7 @@ class AlgoDis:
         data1_no_null = []
         data2_no_null = []
         for d1, d2 in data1, data2:
-            if d1 != None and d2 != None:
+            if d1 != np.nan and d2 != np.nan and len(d1) != 0 and len(d2) != 0:
                 data1_no_null.append(d1)
                 data2_no_null.append(d2)
 
@@ -32,7 +32,7 @@ class AlgoDis:
 
     def euclideanDistance(self, data1, data2):
 
-        data1, data2 = self.deleteNull(data1,data2)
+        data1, data2 = self.deleteNull(data1, data2)
         data1 = self.selectNumeric(data1)
         data2 = self.selectNumeric(data2)
 

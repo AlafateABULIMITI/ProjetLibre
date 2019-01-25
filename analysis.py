@@ -5,10 +5,8 @@ import Levenshtein as ls
 import connDB
 import algoDis
 
-
 # def separateData(data):
 #     pass
-
 
 
 # def cleanData(df):
@@ -58,12 +56,11 @@ if __name__ == "__main__":
     #     print(object)
 
     connDB = connDB.ConnDB()
-    myquery = {"countries":'France'}
-    testData=connDB.read_mongo(db="openFood",collection="openFood", query=myquery)
+    myquery = {"countries": 'France'}
+    testData = connDB.read_mongo(db="openFood", collection="openFood", query=myquery)
     print(type(testData[0]))
     print(testData[1])
 
     # algoDis=algoDis.AlgoDis()
     # distance=algoDis.calculateDis(testData[0].values,testData[1].values)
     # print("la distance est: "+distance)
-
