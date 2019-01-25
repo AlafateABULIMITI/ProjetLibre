@@ -40,6 +40,8 @@ class AlgoDis:
         return dis
 
     def levenshteinDistance(self, data1, data2):
+
+        data1, data2 = self.deleteNull(data1, data2)
         data2 = self.selectStr(data2)
         data1 = self.selectStr(data1)
 

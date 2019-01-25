@@ -59,7 +59,7 @@ if __name__ == "__main__":
     connDB = connDB.ConnDB()
     connDB.connect_mongo(port=27017,username="",password="",db="openFood",host="localhost")
 
-    myquery = {"_id": "20172022"}
+    myquery = {"_id": "20292836"}
     testData=connDB.read_mongo(db="openFood",collection="openFood", query=myquery)
     print("nombre est: "+ str(len(testData)))
 
