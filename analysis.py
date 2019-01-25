@@ -58,19 +58,12 @@ if __name__ == "__main__":
     #     print(object)
 
     connDB = connDB.ConnDB()
-    myDB=connDB.connect_mongo(port=27017,username="",password="",db="openFood",host="localhost")
-
-    myCOllection=myDB["openFood"]
-    testData=myCOllection.find().limit(2)
-    object1=testData[0]
-    object2=testData[1]
-
-    # myquery = {"_id": "20172022"}
-    # testData=connDB.read_mongo(db="openFood",collection="openFood", query=myquery)
-    print(testData[0])
+    myquery = {"countries":'France'}
+    testData=connDB.read_mongo(db="openFood",collection="openFood", query=myquery)
+    print(type(testData[0]))
     print(testData[1])
 
-    algoDis=algoDis.AlgoDis()
-    distance=algoDis.calculateDis(testData[0],testData[1])
-    print("la distance est: "+distance)
+    # algoDis=algoDis.AlgoDis()
+    # distance=algoDis.calculateDis(testData[0].values,testData[1].values)
+    # print("la distance est: "+distance)
 

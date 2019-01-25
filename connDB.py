@@ -21,9 +21,9 @@ class ConnDB:
         db = self.connect_mongo(host=host, port=port, username=username, password=password, db=db)
 
         # Make a query to the specific DB and Collection
-        cursor = db[collection].find(query)
+        dataSet = db[collection].find(query)
 
         # Expand the cursor and construct the DataFrame
-        df = pd.DataFrame(list(cursor))
+        # df = pd.DataFrame(list(cursor))
 
-        return df
+        return dataSet
