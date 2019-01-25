@@ -8,7 +8,7 @@ class AlgoDis:
         data1_no_null = []
         data2_no_null = []
         for d1, d2 in data1, data2:
-            if d1 != None or d2 != None:
+            if d1 != None and d2 != None:
                 data1_no_null.append(d1)
                 data2_no_null.append(d2)
 
