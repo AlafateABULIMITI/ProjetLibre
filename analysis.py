@@ -5,51 +5,35 @@ import Levenshtein as ls
 import connDB
 
 
-def separateData(data):
-    pass
+# def separateData(data):
+#     pass
 
 
-def euclideanDistance(data1, data2):
-    dis = np.linalg.norm(data1 - data2)
-    return dis
 
-
-def levenshteinDistance(data1, data2):
-    lsdistances = 0
-    for i in range(len(data1)):
-        lsdistances = ls.distance(data1[i], data2[i]) + lsdistances
-    return lsdistances
-
-
-def calculateDis(data1, data2):
-    dis = euclideanDistance(data1, data2) + levenshteinDistance(data1, data2)
-    return dis
-
-
-def cleanData(df):
-    # 1.quantitiy
-    df.rename(columns={'quantity': 'quantity(g)'}, inplace=True)
-    df['quantity(g)'].fillna('0', inplace=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('grammes', '', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('kg', '000', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('g', '', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace(' ', '', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('Vrac', '0', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('ml', '', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('capsules', '', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('l', '000', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace(
-        '1.008000/12pain', '0', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('c000e', '000', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace(',', '.', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('4x5c000', '0', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('1bun', '0', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('e', '', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('r', '', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('c000', '000', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('(nto)', '', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].replace('()', '', regex=True)
-    df['quantity(g)'] = df['quantity(g)'].astype(float)
+# def cleanData(df):
+#     # 1.quantitiy
+#     df.rename(columns={'quantity': 'quantity(g)'}, inplace=True)
+#     df['quantity(g)'].fillna('0', inplace=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('grammes', '', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('kg', '000', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('g', '', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace(' ', '', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('Vrac', '0', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('ml', '', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('capsules', '', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('l', '000', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace(
+#         '1.008000/12pain', '0', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('c000e', '000', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace(',', '.', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('4x5c000', '0', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('1bun', '0', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('e', '', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('r', '', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('c000', '000', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('(nto)', '', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].replace('()', '', regex=True)
+#     df['quantity(g)'] = df['quantity(g)'].astype(float)
 
 
 
