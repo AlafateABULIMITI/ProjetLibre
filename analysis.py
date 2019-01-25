@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import Levenshtein as ls
+import connDB
 
 
 def separateData(data):
@@ -52,16 +53,22 @@ def cleanData(df):
 
 
 
-
 if __name__ == "__main__":
-    file = 'en.openfoodfacts.org.products.csv'
-    df = pd.DataFrame()
-    with open(file)as f:
-        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
-        for chunk in chunk_iter:
-            df = pd.concat([df, chunk])
+    # file = 'en.openfoodfacts.org.products.csv'
+    # df = pd.DataFrame()
+    # with open(file)as f:
+    #     chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
+    #     for chunk in chunk_iter:
+    #         df = pd.concat([df, chunk])
+    #
+    # cols = df.columns.values.tolist()
+    # df.info()
+    # print(cols)
+    openFoodCollection=connDB.connecDB()
+    lines=openFoodCollection.find().count()
+    print(str(lines)+" lines in the collection.")
 
-    cols = df.columns.values.tolist()
-    df.info()
-    print(cols)
+    testObjects=openFoodCollection.find().limit(2)
+    for object in testObjects:
+        print(object)
 
