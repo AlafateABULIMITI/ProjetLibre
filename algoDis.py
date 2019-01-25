@@ -7,10 +7,21 @@ class AlgoDis:
     def deleteNull(self, data1, data2):
         data1_no_null = []
         data2_no_null = []
-        for d1, d2 in data1, data2:
-            if d1 != np.nan and d2 != np.nan and len(d1) != 0 and len(d2) != 0:
-                data1_no_null.append(d1)
-                data2_no_null.append(d2)
+        for i in range(len(data1)):
+            if (data1[i] != np.nan and data2[i] != np.nan) or ((
+                                                                       (type(data1[i]) == np.str and type(
+                                                                           data2[i]) == np.str) or (
+                                                                               type(data1[i]) == 'list' and type(
+                                                                           data2[i]) == 'list')) and (
+                                                                       len(data1[i]) != 0 and len(data2[i]) != 0)):
+                data1_no_null.append(data1[i])
+                data2_no_null.append(data2[i])
+
+            # if (type(data1[i]) == np.str and type(data2[i]) == np.str) or (type(data1[i]) == 'list' and type(
+            #         data2[i]) == 'list'):
+            #     if len(data1[i]) != 0 and len(data2[i]) != 0:
+            #         data1 = np.delete(data1, i)
+            #         data2 = np.delete(data2, i)
 
         return data1_no_null, data2_no_null
 

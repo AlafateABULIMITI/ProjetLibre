@@ -56,10 +56,12 @@ if __name__ == "__main__":
     #     print(object)
 
     connDB = connDB.ConnDB()
-    myquery = {"countries":'France'}
-    testData=connDB.read_mongo(db="openFood",collection="openFood", query=myquery,nbLimit=5)
-    print((testData.iloc[-1]))
+    myquery = {"countries": 'France'}
+    testData = connDB.read_mongo(db="openFood", collection="products", query=myquery, nbLimit=5)
 
-    # algoDis=algoDis.AlgoDis()
-    # distance=algoDis.calculateDis(testData[0].values,testData[1].values)
-    # print("la distance est: "+distance)
+    algoDis = algoDis.AlgoDis()
+    data1, data2 = algoDis.deleteNull(testData.iloc[0].values, testData.iloc[1].values)
+    # print("la distance est: " + str(distance))
+    for d in data2:
+        print(d)
+    print(type(data2[2]))
