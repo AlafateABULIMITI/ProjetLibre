@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 import pandas as pd
 
+
 class ConnDB:
 
     def connect_mongo(self, host, port, username, password, db):
@@ -13,7 +14,7 @@ class ConnDB:
 
         return conn[db]
 
-    def read_mongo(self, db, collection, query={}, host='localhost', port=27017, username=None, password=None, no_id=True):
+    def read_mongo(self, db, collection, query={}, host='localhost', port=27017, username=None, password=None):
         """ Read from Mongo and Store into DataFrame """
 
         # Connect to MongoDB
