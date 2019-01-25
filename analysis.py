@@ -64,11 +64,18 @@ if __name__ == "__main__":
     # cols = df.columns.values.tolist()
     # df.info()
     # print(cols)
-    openFoodCollection=connDB.connecDB()
-    lines=openFoodCollection.find().count()
-    print(str(lines)+" lines in the collection.")
+    # openFoodCollection=connDB.connecDB()
+    # lines=openFoodCollection.find().count()
+    # print(str(lines)+" lines in the collection.")
+    #
+    # testObjects=openFoodCollection.find().limit(2)
+    # for object in testObjects:
+    #     print(object)
 
-    testObjects=openFoodCollection.find().limit(2)
-    for object in testObjects:
-        print(object)
+    connDB = connDB.ConnDB()
+    connDB.connect_mongo(port=27017,username="",password="",db="openFood",host="localhost")
+
+    myquery = {"_id": "20172022"}
+    testData=connDB.read_mongo(db="openFood",collection="openFood", query=myquery)
+    print("nombre est: "+ str(len(testData)))
 
