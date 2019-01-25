@@ -59,9 +59,8 @@ if __name__ == "__main__":
 
     connDB = connDB.ConnDB()
     myquery = {"countries":'France'}
-    testData=connDB.read_mongo(db="openFood",collection="openFood", query=myquery)
-    print(type(testData[0]))
-    print(testData[1])
+    testData=connDB.read_mongo(db="openFood",collection="openFood", query=myquery,nbLimit=5)
+    print((testData.iloc[-1]))
 
     # algoDis=algoDis.AlgoDis()
     # distance=algoDis.calculateDis(testData[0].values,testData[1].values)
