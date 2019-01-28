@@ -1,5 +1,7 @@
 import numpy as np
 import Levenshtein as ls
+import operator
+import math
 
 
 class AlgoDis:
@@ -8,21 +10,34 @@ class AlgoDis:
         data1_no_null = []
         data2_no_null = []
         for i in range(len(data1)):
-            if (data1[i] != np.nan and data2[i] != np.nan) or ((
-                                                                       (type(data1[i]) == np.str and type(
-                                                                           data2[i]) == np.str) or (
-                                                                               type(data1[i]) == 'list' and type(
-                                                                           data2[i]) == 'list')) and (
-                                                                       len(data1[i]) != 0 and len(data2[i]) != 0)):
-                data1_no_null.append(data1[i])
-                data2_no_null.append(data2[i])
-
-            # if (type(data1[i]) == np.str and type(data2[i]) == np.str) or (type(data1[i]) == 'list' and type(
-            #         data2[i]) == 'list'):
-            #     if len(data1[i]) != 0 and len(data2[i]) != 0:
-            #         data1 = np.delete(data1, i)
-            #         data2 = np.delete(data2, i)
-
+            if  isinstance(data1[i],str) and isinstance(data2[i],str) :
+                if( len(data1[i]) != 0 and len(data2[i]) != 0):
+                    if(operator.eq(str.lower(data1[i]),'unknown') or operator.eq(str.lower(data2[i]),'unknown')) :
+                        continue
+                    else:
+                        data1_no_null.append(data1[i])
+                        data2_no_null.append(data2[i])
+                else:
+                    continue
+            else:
+                if ( isinstance(data1[i], list) and isinstance(data2[i],list) ) or  ( isinstance(data1[i], dict) and isinstance(data2[i],dict) ):
+                    if len(data1[i]) != 0 and len(data2[i]) != 0 :
+                        if isinstance(data1[i], list) and isinstance(data2[i],list) and operator.eq(str.lower(data1[i][0]),'unknown')==False and operator.eq(str.lower(data2[i][0]),'unknown')==False:
+                            data1_no_null.append(data1[i])
+                            data2_no_null.append(data2[i])
+                        else:
+                            continue
+                    else:
+                        continue
+                else:
+                    if(isinstance(data1[i], list)==False and isinstance(data2[i],list)==False  and
+                            isinstance(data1[i], dict)==False and isinstance(data2[i],dict)==False and
+                            isinstance(data1[i], str)==False and isinstance(data2[i], str)==False and
+                            math.isnan(data1[i])==False and math.isnan(data2[i])==False ):
+                        data1_no_null.append(data1[i])
+                        data2_no_null.append(data2[i])
+                    else:
+                        continue
         return data1_no_null, data2_no_null
 
     def selectNumeric(self, data):
@@ -42,7 +57,6 @@ class AlgoDis:
         return data_str
 
     def euclideanDistance(self, data1, data2):
-
         data1, data2 = self.deleteNull(data1, data2)
         data1 = self.selectNumeric(data1)
         data2 = self.selectNumeric(data2)
@@ -51,7 +65,6 @@ class AlgoDis:
         return dis
 
     def levenshteinDistance(self, data1, data2):
-
         data1, data2 = self.deleteNull(data1, data2)
         data2 = self.selectStr(data2)
         data1 = self.selectStr(data1)
@@ -64,3 +77,4 @@ class AlgoDis:
     def calculateDis(self, data1, data2):
         dis = self.euclideanDistance(data1, data2) + self.levenshteinDistance(data1, data2)
         return dis
+
