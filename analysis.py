@@ -65,8 +65,10 @@ if __name__ == "__main__":
 
     algoDistance = algoDis.AlgoDis()
     list1, list2 = algoDistance.deleteNull(dataItem1, dataItem2)
-    print(len(list1))
-    print(len(list2))
+    print(type(list1[0]))
+    print(list1)
+    selectNumeric=algoDistance.selectNumeric(list1)
+    print(selectNumeric)
     # for i in list1:
     #     print(i)
     # distance=algoDistance.calculateDis(data1=dataItem1,data2=dataItem2)

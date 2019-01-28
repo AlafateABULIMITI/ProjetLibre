@@ -46,7 +46,7 @@ class AlgoDis:
     def selectNumeric(self, data):
         data_num = []
         for d in data:
-            if isinstance(d, int) or isinstance(d, np.float64):
+            if isinstance(d, str)==False and isinstance(d, list)==False and isinstance(d, dict)==False:
                 data_num.append(d)
         data_num = np.array(data_num)
         return data_num
