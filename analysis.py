@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
     connDB = connDB.ConnDB()
     myquery = {"countries": 'France'}
-    testData = connDB.read_mongo(db="openFood", collection="openFood", query=myquery, nbLimit=5)
+    testData = connDB.read_mongo(db="openFood", collection="products", query=myquery, nbLimit=5)
     dataItem1 = testData.iloc[0].values
     dataItem2 = testData.iloc[1].values
 
@@ -65,8 +65,8 @@ if __name__ == "__main__":
 
     algoDistance = algoDis.AlgoDis()
     list1, list2 = algoDistance.deleteNull(dataItem1, dataItem2)
-    print(len(list1))
-    print(len(list2))
+    list1 = algoDistance.selectStr(list1)
+    print(list1)
     # for i in list1:
     #     print(i)
     # distance=algoDistance.calculateDis(data1=dataItem1,data2=dataItem2)
