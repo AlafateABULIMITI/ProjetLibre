@@ -54,7 +54,7 @@ class AlgoDis:
     def selectStr(self, data):
         data_str = []
         for d in data:
-            if isinstance(d, str) or isinstance(d, list):
+            if isinstance(d, str) or isinstance(d, list) or isinstance(d, dict):
                 data_str.append(d)
         data_str = np.array(data_str)
         return data_str
@@ -80,5 +80,3 @@ class AlgoDis:
     def calculateDis(self, data1, data2):
         dis = self.euclideanDistance(data1, data2) + self.levenshteinDistance(data1, data2)
         return dis
-
-

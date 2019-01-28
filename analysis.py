@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
     connDB = connDB.ConnDB()
     myquery = {"countries": 'France'}
-    testData = connDB.read_mongo(db="openFood", collection="openFood", query=myquery, nbLimit=5)
+    testData = connDB.read_mongo(db="openFood", collection="products", query=myquery, nbLimit=5)
     dataItem1 = testData.iloc[0].values
     dataItem2 = testData.iloc[1].values
 
