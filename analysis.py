@@ -1,5 +1,6 @@
 import connDB
 import algoDis
+import pandas as pd
 
 # def separateData(data):
 #     pass
@@ -33,16 +34,17 @@ import algoDis
 
 # Main execution
 if __name__ == "__main__":
-    # file = 'en.openfoodfacts.org.products.csv'
-    # df = pd.DataFrame()
-    # with open(file)as f:
-    #     chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
-    #     for chunk in chunk_iter:
-    #         df = pd.concat([df, chunk])
-    #
-    # cols = df.columns.values.tolist()
-    # df.info()
-    # print(cols)
+    file = 'en.openfoodfacts.org.products.csv'
+    df = pd.DataFrame()
+    with open(file)as f:
+        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
+        for chunk in chunk_iter:
+            df = pd.concat([df, chunk])
+
+    cols = df.columns.values.tolist()
+    df.info()
+    print(cols)
+
     # openFoodCollection=connDB.connecDB()
     # lines=openFoodCollection.find().count()
     # print(str(lines)+" lines in the collection.")
@@ -51,21 +53,21 @@ if __name__ == "__main__":
     # for object in testObjects:
     #     print(object)
 
-    connDB = connDB.ConnDB()
-    myquery = {"countries": 'France'}
-    testData = connDB.read_mongo(db="openFood", collection="openFood", query=myquery, nbLimit=5)
-    dataItem1 = testData.iloc[0].values
-    dataItem2 = testData.iloc[1].values
+    # connDB = connDB.ConnDB()
+    # myquery = {"countries": 'France'}
+    # testData = connDB.read_mongo(db="openFood", collection="openFood", query=myquery, nbLimit=5)
+    # dataItem1 = testData.iloc[0].values
+    # dataItem2 = testData.iloc[1].values
 
     # print(testData.iloc[0])
 
-    algoDistance = algoDis.AlgoDis()
-    list1, list2 = algoDistance.deleteNull(dataItem1, dataItem2)
-    print(len(list1))
-    selectNumeric=algoDistance.selectNumeric(list1)
-    selectStr=algoDistance.selectStr(list1)
-    print(len(selectNumeric))
-    print(len(selectStr))
+    # algoDistance = algoDis.AlgoDis()
+    # list1, list2 = algoDistance.deleteNull(dataItem1, dataItem2)
+    # print(len(list1))
+    # selectNumeric=algoDistance.selectNumeric(list1)
+    # selectStr=algoDistance.selectStr(list1)
+    # print(len(selectNumeric))
+    # print(len(selectStr))
     # print(len(selectStr))
     # for i in list1:
     #     print(i)
