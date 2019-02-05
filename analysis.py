@@ -1,6 +1,7 @@
 import connDB
 import algoDis
 import dataCenter
+import pandas as pd
 
 # def separateDa
 # ta(data):
@@ -35,16 +36,16 @@ import dataCenter
 
 # Main execution
 if __name__ == "__main__":
-    file = 'en.openfoodfacts.org.products.csv'
-    df = pd.DataFrame()
-    with open(file)as f:
-        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
-        for chunk in chunk_iter:
-            df = pd.concat([df, chunk])
-
-    cols = df.columns.values.tolist()
-    df.info()
-    print(cols)
+    # file = 'en.openfoodfacts.org.products.csv'
+    # df = pd.DataFrame()
+    # with open(file)as f:
+    #     chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
+    #     for chunk in chunk_iter:
+    #         df = pd.concat([df, chunk])
+    #
+    # cols = df.columns.values.tolist()
+    # df.info()
+    # print(cols)
 
     # openFoodCollection=connDB.connecDB()
     # lines=openFoodCollection.find().count()
@@ -72,12 +73,21 @@ if __name__ == "__main__":
     #     print(i)
     # distance=algoDistance.calculateDis(data1=dataItem1,data2=dataItem2)
     # print("la distance est: "+distance)
+
     file = 'fr.openfoodfacts.org.products.csv'
     df = pd.DataFrame()
     with open(file)as f:
         chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
         for chunk in chunk_iter:
             df = pd.concat([ df, chunk ])
+
+    # test专用
+    # file = 'test.csv'
+    # df = pd.DataFrame()
+    # with open(file)as f:
+    #     chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
+    #     for chunk in chunk_iter:
+    #         df = pd.concat([df, chunk])
 
     dataCenter = dataCenter.DataCenter()
     colslist = [ 'url', 'product_name', 'brands', 'categories', 'labels', 'allergens_fr', 'traces_fr', 'additives_n',
@@ -108,3 +118,11 @@ if __name__ == "__main__":
     cols = df.columns.values.tolist()
     df.info()
     print(cols)
+
+    # 有的字符串不对应
+    # GramLables=["categories_fr","labels","allergens_fr","traces_fr","additives_fr","main_category_fr"]
+    # GramLablesIndexs=[]
+    # for i in range(len(GramLables)):
+    #     GramLablesIndexs.append(cols.index(GramLables[i]))
+    # print(GramLablesIndexs)
+

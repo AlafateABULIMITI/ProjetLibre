@@ -2,6 +2,8 @@ import numpy as np
 import Levenshtein as ls
 import operator
 import math
+import twoGrams
+import unicodedata
 
 
 class AlgoDis:
@@ -81,3 +83,23 @@ class AlgoDis:
     def calculateDis(self, data1, data2):
         dis = self.euclideanDistance(data1, data2) + self.levenshteinDistance(data1, data2)
         return dis
+
+    # entree: 2 phrases
+    # sortie: distance
+    def calculateDis2Gram(self,data1,data2):
+        distance=0
+        value1,_=twoGrams.sorVec(self.changeAccents(data1))
+        value2,_ = twoGrams.sorVec(self.changeAccents(data2))
+        distance=np.linalg.norm(np.array(list(value1))-np.array(list(value2)))
+        # print(distance)
+        return distance
+
+    def changeAccents(self,phase):
+        unCode=unicodedata.normalize('NFKD', phase).encode('ascii', 'ignore').decode("utf-8")
+        # print(unCode)
+        return unCode
+
+    def calculateDis2GramIte(self,dataFrame):
+        for index, row in dataFrame.iterrows():
+            print(row)
+
