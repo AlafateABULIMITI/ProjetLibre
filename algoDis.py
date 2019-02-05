@@ -57,6 +57,7 @@ class AlgoDis:
             if isinstance(d, str) or isinstance(d, list) or isinstance(d, dict):
                 data_str.append(d)
         data_str = np.array(data_str)
+        print("test")
         return data_str
 
     def euclideanDistance(self, data1, data2):
