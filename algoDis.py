@@ -84,9 +84,14 @@ class AlgoDis:
         dis = self.euclideanDistance(data1, data2) + self.levenshteinDistance(data1, data2)
         return dis
 
+    def changeAccents(self,phase):
+        unCode=unicodedata.normalize('NFKD', phase).encode('ascii', 'ignore').decode("utf-8")
+        # print(unCode)
+        return unCode
+
     # entree: 2 phrases
     # sortie: distance
-    def calculateDis2Gram(self,data1,data2):
+    def calculateDis2GramNoUse(self,data1,data2):
         distance=0
         value1,_=twoGrams.sorVec(self.changeAccents(data1))
         value2,_ = twoGrams.sorVec(self.changeAccents(data2))
@@ -94,12 +99,40 @@ class AlgoDis:
         # print(distance)
         return distance
 
-    def changeAccents(self,phase):
-        unCode=unicodedata.normalize('NFKD', phase).encode('ascii', 'ignore').decode("utf-8")
-        # print(unCode)
-        return unCode
+    def calculate2GramCos(self,dataFrame1,dataFrame2):
+        GramLables = ["categories_fr", "labels", "allergens_fr", "traces_fr", "additives_fr", "main_category_fr"]
+        vecFrame1=[]
+        vecFrame2=[]
+        for i in GramLables:
+            df1=dataFrame1[i]
+            if( isinstance(df1, list) == False and isinstance(df1, dict) == False  and
+                            isinstance(df1, str) == False  and math.isnan(df1)==True ):
+                value1, _ = twoGrams.sorVec("")
+                if(len(vecFrame1)==0):
+                    vecFrame1=np.array(list(value1))
+                else:
+                    vecFrame1=vecFrame1+np.array(list(value1))
+            else:
+                value1, _ = twoGrams.sorVec(self.changeAccents(df1))
+                if (len(vecFrame1) == 0):
+                    vecFrame1 = np.array(list(value1))
+                else:
+                    vecFrame1 = vecFrame1 + np.array(list(value1))
 
-    def calculateDis2GramIte(self,dataFrame):
-        for index, row in dataFrame.iterrows():
-            print(row)
+            df2 = dataFrame2[i]
+            if (isinstance(df2, list) == False and isinstance(df2, dict) == False  and
+                            isinstance(df2, str) == False  and math.isnan(df2) == True ):
+                value2, _ = twoGrams.sorVec("")
+                if (len(vecFrame2) == 0):
+                    vecFrame2 = np.array(list(value2))
+                else:
+                    vecFrame2 = vecFrame2 + np.array(list(value2))
+            else:
+                value2, _ = twoGrams.sorVec(self.changeAccents(df2))
+                if (len(vecFrame2) == 0):
+                    vecFrame2 = np.array(list(value2))
+                else:
+                    vecFrame2 = vecFrame2 + np.array(list(value2))
+        cos=np.dot(vecFrame1,vecFrame2)/(np.linalg.norm(vecFrame1)* np.linalg.norm(vecFrame2))
+        return cos
 

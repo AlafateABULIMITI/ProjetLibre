@@ -2,6 +2,7 @@ import connDB
 import algoDis
 import dataCenter
 import pandas as pd
+import twoGrams
 
 # def separateDa
 # ta(data):
@@ -74,23 +75,23 @@ if __name__ == "__main__":
     # distance=algoDistance.calculateDis(data1=dataItem1,data2=dataItem2)
     # print("la distance est: "+distance)
 
-    file = 'fr.openfoodfacts.org.products.csv'
-    df = pd.DataFrame()
-    with open(file)as f:
-        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
-        for chunk in chunk_iter:
-            df = pd.concat([ df, chunk ])
-
-    # test专用
-    # file = 'test.csv'
+    # file = 'fr.openfoodfacts.org.products.csv'
     # df = pd.DataFrame()
     # with open(file)as f:
-    #     chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
+    #     chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
     #     for chunk in chunk_iter:
-    #         df = pd.concat([df, chunk])
+    #         df = pd.concat([ df, chunk ])
+
+    # test专用
+    file = 'test.csv'
+    df = pd.DataFrame()
+    with open(file)as f:
+        chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
+        for chunk in chunk_iter:
+            df = pd.concat([df, chunk])
 
     dataCenter = dataCenter.DataCenter()
-    colslist = [ 'url', 'product_name', 'brands', 'categories', 'labels', 'allergens_fr', 'traces_fr', 'additives_n',
+    colslist = [ 'url', 'product_name', 'brands', 'categories','categories_fr', 'labels', 'allergens_fr', 'traces_fr', 'additives_n',
                  'additives_fr', 'main_category_fr', 'image_small_url', 'energy_100g', 'energy-from-fat_100g',
                  'fat_100g', 'saturated-fat_100g', 'butyric-acid_100g', 'caproic-acid_100g', 'caprylic-acid_100g',
                  'capric-acid_100g', 'lauric-acid_100g', 'myristic-acid_100g', 'palmitic-acid_100g',
@@ -119,10 +120,11 @@ if __name__ == "__main__":
     df.info()
     print(cols)
 
-    # 有的字符串不对应
-    # GramLables=["categories_fr","labels","allergens_fr","traces_fr","additives_fr","main_category_fr"]
-    # GramLablesIndexs=[]
-    # for i in range(len(GramLables)):
-    #     GramLablesIndexs.append(cols.index(GramLables[i]))
-    # print(GramLablesIndexs)
+    # 计算两条记录的2gram的余弦值
+    algo=algoDis.AlgoDis()
+    cos=algo.calculate2GramCos(df.iloc[0],df.iloc[1])
+    print(cos)
+    # df2=df.iloc[1]
+    # df1=df.iloc[1]['labels']
+    # print(df1)
 
