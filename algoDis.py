@@ -54,14 +54,31 @@ class AlgoDis:
         data_num = np.array(data_num)
         return data_num
 
-    def selectStr(self, data):
-        data_str = [ ]
-        for d in data:
-            if isinstance(d, str) or isinstance(d, list) or isinstance(d, dict):
-                data_str.append(d)
-        data_str = np.array(data_str)
-        print("test")
-        return data_str
+    def selectStr(self, dataFrame1):
+        # data_str = [ ]
+        # for d in data:
+        #     if isinstance(d, str) or isinstance(d, list) or isinstance(d, dict):
+        #         data_str.append(d)
+        # data_str = np.array(data_str)
+        # print("test")
+        GramLabels = [ "categories_fr", "labels", "allergens_fr", "traces_fr", "additives_fr", "main_category_fr" ]
+        vecFrame1 = [ ]
+        for i in GramLabels:
+            df1 = dataFrame1[ i ]
+            if (isinstance(df1, list) == False and isinstance(df1, dict) == False and
+                    isinstance(df1, str) == False and math.isnan(df1) == True):
+                value1, _ = twoGrams.sorVec("")
+                if (len(vecFrame1) == 0):
+                    vecFrame1 = np.array(list(value1))
+                else:
+                    vecFrame1 = vecFrame1 + np.array(list(value1))
+            else:
+                value1, _ = twoGrams.sorVec(self.changeAccents(df1))
+                if (len(vecFrame1) == 0):
+                    vecFrame1 = np.array(list(value1))
+                else:
+                    vecFrame1 = vecFrame1 + np.array(list(value1))
+        return vecFrame1
 
     def euclideanDistance(self, data1, data2):
         data1, data2 = self.deleteNull(data1, data2)
@@ -101,10 +118,10 @@ class AlgoDis:
         return distance
 
     def calculate2GramCos(self, dataFrame1, dataFrame2):
-        GramLables = [ "categories_fr", "labels", "allergens_fr", "traces_fr", "additives_fr", "main_category_fr" ]
+        GramLabels = [ "categories_fr", "labels", "allergens_fr", "traces_fr", "additives_fr", "main_category_fr" ]
         vecFrame1 = [ ]
         vecFrame2 = [ ]
-        for i in GramLables:
+        for i in GramLabels:
             df1 = dataFrame1[ i ]
             if (isinstance(df1, list) == False and isinstance(df1, dict) == False and
                     isinstance(df1, str) == False and math.isnan(df1) == True):

@@ -11,7 +11,7 @@ class DataViz:
     def save(self):
         pass
 
-    def DrawCircle(self, num_points):
+    def drawCircle(self, num_points):
         r = 0.5
         o_x, o_y = (0., 0.)
 
@@ -32,7 +32,7 @@ class DataViz:
         ax.axis('equal')
         return ax
 
-    def DrawPoint(self, prlist, num_points):
+    def drawPoint(self, prlist, num_points):
         sumdis = sum(prlist)
         W = [ ]
         for dis in prlist:
@@ -49,3 +49,4 @@ class DataViz:
 
         axe = self.DrawCircle(num_points)
         axe.plot(p_x, p_y, 'mo')
+

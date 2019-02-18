@@ -125,24 +125,24 @@ if __name__ == "__main__":
     print(cols)
 
     # 计算两条记录的2gram的余弦值
-    algo = algoDis.AlgoDis()
-    dis1 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 3 ])
-    dis2 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 4 ])
-    dis3 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 5 ])
-    dis4 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 3 ])
-    dis5 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 4 ])
-    dis6 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 5 ])
-    dis7 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 3 ])
-    dis8 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 4 ])
-    dis9 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 5 ])
-    # 0 1 2 和 3 4 5 比较
+    # algo = algoDis.AlgoDis()
+    # dis1 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 3 ])
+    # dis2 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 4 ])
+    # dis3 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 5 ])
+    # dis4 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 3 ])
+    # dis5 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 4 ])
+    # dis6 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 5 ])
+    # dis7 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 3 ])
+    # dis8 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 4 ])
+    # dis9 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 5 ])
+    # # 0 1 2 和 3 4 5 比较
 
     # 点3 对权重W 的计算
-    dis_list = [ ]
-    dis_list.append(dis1)
-    dis_list.append(dis4)
-    dis_list.append(dis7)
-    sumdis = dis1 + dis4 + dis7
+    # dis_list = [ ]
+    # dis_list.append(dis1)
+    # dis_list.append(dis4)
+    # dis_list.append(dis7)
+    # sumdis = dis1 + dis4 + dis7
 
     # print('0')
     # print(dis1)
@@ -157,11 +157,12 @@ if __name__ == "__main__":
     # print(dis8)
     # print(dis9)
 
-    dataViz = dataViz.DataViz()
+    # dataViz = dataViz.DataViz()
     #axe = dataViz.DrawCircle(3)
-    dataViz.DrawPoint(dis_list, 3)
+    # dataViz.DrawPoint(dis_list, 3)
 
-    plt.show()
+    # plt.show()
     # df2=df.iloc[1]
     # df1=df.iloc[1]['labels']
     # print(df1)
+    dataCenter.seletPOIs(df)
