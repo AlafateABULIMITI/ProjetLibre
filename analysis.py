@@ -1,8 +1,11 @@
 import connDB
 import algoDis
 import dataCenter
+import dataViz
 import pandas as pd
 import twoGrams
+import matplotlib.pyplot as plt
+import numpy as np
 
 # def separateDa
 # ta(data):
@@ -88,10 +91,11 @@ if __name__ == "__main__":
     with open(file)as f:
         chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
         for chunk in chunk_iter:
-            df = pd.concat([df, chunk])
+            df = pd.concat([ df, chunk ])
 
     dataCenter = dataCenter.DataCenter()
-    colslist = [ 'url', 'product_name', 'brands', 'categories','categories_fr', 'labels', 'allergens_fr', 'traces_fr', 'additives_n',
+    colslist = [ 'url', 'product_name', 'brands', 'categories', 'categories_fr', 'labels', 'allergens_fr', 'traces_fr',
+                 'additives_n',
                  'additives_fr', 'main_category_fr', 'image_small_url', 'energy_100g', 'energy-from-fat_100g',
                  'fat_100g', 'saturated-fat_100g', 'butyric-acid_100g', 'caproic-acid_100g', 'caprylic-acid_100g',
                  'capric-acid_100g', 'lauric-acid_100g', 'myristic-acid_100g', 'palmitic-acid_100g',
@@ -121,10 +125,43 @@ if __name__ == "__main__":
     print(cols)
 
     # 计算两条记录的2gram的余弦值
-    algo=algoDis.AlgoDis()
-    cos=algo.calculate2GramCos(df.iloc[0],df.iloc[1])
-    print(cos)
+    algo = algoDis.AlgoDis()
+    dis1 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 3 ])
+    dis2 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 4 ])
+    dis3 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 5 ])
+    dis4 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 3 ])
+    dis5 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 4 ])
+    dis6 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 5 ])
+    dis7 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 3 ])
+    dis8 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 4 ])
+    dis9 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 5 ])
+    # 0 1 2 和 3 4 5 比较
+
+    # 点3 对权重W 的计算
+    dis_list = [ ]
+    dis_list.append(dis1)
+    dis_list.append(dis4)
+    dis_list.append(dis7)
+    sumdis = dis1 + dis4 + dis7
+
+    # print('0')
+    # print(dis1)
+    # print(dis2)
+    # print(dis3)
+    # print('1')
+    # print(dis4)
+    # print(dis5)
+    # print(dis6)
+    # print('2')
+    # print(dis7)
+    # print(dis8)
+    # print(dis9)
+
+    dataViz = dataViz.DataViz()
+    #axe = dataViz.DrawCircle(3)
+    dataViz.DrawPoint(dis_list, 3)
+
+    plt.show()
     # df2=df.iloc[1]
     # df1=df.iloc[1]['labels']
     # print(df1)
-
