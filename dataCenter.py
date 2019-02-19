@@ -3,6 +3,7 @@ from twoGrams import sorVec
 import pandas as pd
 import numpy as np
 from sklearn.cluster import KMeans
+from sklearn.metrics import pairwise_distances_argmin_min
 import math
 
 
@@ -17,19 +18,19 @@ class DataCenter:
     def selectData(self, dataFrame):
         pass
 
-    def seletPOIs(self, dataFrame):
-        data = self.convertDataSet(dataFrame)
-        estimator = KMeans(n_clusters=3)
+    def selectPOIs(self, df, n):
+        data = self.convertDataSet(df)
+        estimator = KMeans(n_clusters=n, n_jobs=n)
         estimator.fit(data)  # 聚类
         label_pred = estimator.labels_  # 获取聚类标签
         centroids = estimator.cluster_centers_  # 获取聚类中心
         inertia = estimator.inertia_  # 获取聚类准则的总和
-        print('inertia')
-        print(inertia)
-        print('centroids')
-        print(centroids)
-        print('label_pred')
-        print(label_pred)
+        closest, _ = pairwise_distances_argmin_min(centroids, data)
+        pois_df = pd.DataFrame()
+        for i in closest:
+            df_temp = pd.DataFrame([df.iloc[i]])
+            pois_df = pd.concat([pois_df, df_temp], axis=0)
+        return closest, pois_df
 
     def convertDataSet(self, df):
         num_df = pd.DataFrame()
@@ -37,9 +38,10 @@ class DataCenter:
             data_num = self.algoDis.selectNumeric(row.values)
             two_gram = self.algoDis.selectStr(row)
             data = np.append(data_num, two_gram)
-            data = np.nan_to_num(data)
+            # data = np.nan_to_num(data)
             df_temp = pd.DataFrame([data])
             num_df = pd.concat([num_df, df_temp], axis=0)
+            num_df = num_df.fillna(0)
         return num_df
 
     def selectPOIsRandom(self, num_POIs, df):

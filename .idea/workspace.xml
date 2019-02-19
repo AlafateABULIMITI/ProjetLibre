@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7721ff7d-9ac3-4bc2-8e4d-d05ab3e8adaf" name="Default Changelist" comment="">
+    <list default="true" id="7721ff7d-9ac3-4bc2-8e4d-d05ab3e8adaf" name="Default Changelist" comment="k means">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataCenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataViz.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataViz.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,15 +16,29 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ProjetLibre$dataViz.coverage" NAME="dataViz Coverage Results" MODIFIED="1550501574994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetLibre$dataCenter.coverage" NAME="dataCenter Coverage Results" MODIFIED="1550583573720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ProjetLibre$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1550589978935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetLibre$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1550591932176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataViz.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="12" column="44" lean-forward="true" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+            <state relative-caret-position="332">
+              <caret line="61" selection-start-line="61" selection-end-line="61" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -36,21 +49,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="194" column="5" lean-forward="true" selection-start-line="194" selection-start-column="5" selection-end-line="194" selection-end-column="5" />
+            <state relative-caret-position="121">
+              <caret line="191" column="45" lean-forward="true" selection-start-line="191" selection-start-column="45" selection-end-line="191" selection-end-column="45" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <marker date="1550589978929" expanded="true" signature="7601:7631" ph="..." />
+                <marker date="1550591932166" expanded="true" signature="7585:7615" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/connDB.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-576">
+              <caret column="12" selection-start-column="5" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dataCenter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="36" />
+            <state relative-caret-position="115">
+              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -59,32 +81,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.csv">
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="258">
-              <caret line="524" column="117" selection-start-line="524" selection-start-column="117" selection-end-line="524" selection-end-column="117" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fr.openfoodfacts.org.products.csv">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="233">
-              <caret line="549" column="11" lean-forward="true" selection-start-line="549" selection-start-column="11" selection-end-line="549" selection-end-column="11" />
+        <entry file="file://$PROJECT_DIR$/algoDis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1226">
+              <caret line="101" column="86" selection-start-line="101" selection-start-column="69" selection-end-line="101" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -114,10 +114,10 @@
         <option value="$PROJECT_DIR$/connDB.py" />
         <option value="$PROJECT_DIR$/twoGrams.py" />
         <option value="$PROJECT_DIR$/algoDis.py" />
-        <option value="$PROJECT_DIR$/test.csv" />
         <option value="$PROJECT_DIR$/dataViz.py" />
-        <option value="$PROJECT_DIR$/dataCenter.py" />
+        <option value="$PROJECT_DIR$/test.csv" />
         <option value="$PROJECT_DIR$/analysis.py" />
+        <option value="$PROJECT_DIR$/dataCenter.py" />
       </list>
     </option>
   </component>
@@ -257,7 +257,8 @@
       <workItem from="1549367818848" duration="3374000" />
       <workItem from="1549441929318" duration="83000" />
       <workItem from="1550495990359" duration="11355000" />
-      <workItem from="1550582486286" duration="7151000" />
+      <workItem from="1550582486286" duration="7178000" />
+      <workItem from="1550590585751" duration="1284000" />
     </task>
     <task id="LOCAL-00001" summary="connDBd">
       <created>1548419167554</created>
@@ -350,21 +351,29 @@
       <option name="project" value="LOCAL" />
       <updated>1550510725040</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="k means">
+      <created>1550590312053</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1550590312053</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36212000" />
+    <option name="totallyTimeSpent" value="37523000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="720" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2003231" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20355412" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32913166" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3564669" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3564669" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.35173503" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -373,17 +382,17 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.30441642" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.30441642" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.30757096" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.77544427" />
-      <window_info anchor="right" id="R Graphics" order="4" />
-      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.7722132" />
+      <window_info anchor="right" id="R Graphics" order="4" weight="0.32956383" />
+      <window_info anchor="right" id="R Packages" order="5" weight="0.32956383" />
       <window_info anchor="right" x="0" y="0" width="257" height="577" id="Documentation" order="6" side_tool="true" weight="0.31502423" />
-      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Database" order="7" weight="0.32956383" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,58 +492,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/connDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/algoDis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-625">
-          <caret line="101" column="86" selection-start-line="101" selection-start-column="69" selection-end-line="101" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataCenter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataViz.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="12" column="44" lean-forward="true" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="194" column="5" lean-forward="true" selection-start-line="194" selection-start-column="5" selection-end-line="194" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1550589978929" expanded="true" signature="7601:7631" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="258">
-          <caret line="524" column="117" selection-start-line="524" selection-start-column="117" selection-end-line="524" selection-end-column="117" />
+    <entry file="file://$PROJECT_DIR$/fr.openfoodfacts.org.products.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="233">
+          <caret line="549" column="11" selection-start-line="549" selection-start-column="11" selection-end-line="549" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -546,10 +507,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fr.openfoodfacts.org.products.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="233">
-          <caret line="549" column="11" lean-forward="true" selection-start-line="549" selection-start-column="11" selection-end-line="549" selection-end-column="11" />
+    <entry file="file://$USER_HOME$/anaconda3/envs/dl_env/lib/python3.6/site-packages/sklearn/cluster/k_means_.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="970" selection-start-line="970" selection-end-line="970" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="232">
+          <caret line="523" column="5" lean-forward="true" selection-start-line="523" selection-start-column="5" selection-end-line="523" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algoDis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1226">
+          <caret line="101" column="86" selection-start-line="101" selection-start-column="69" selection-end-line="101" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-576">
+          <caret column="12" selection-start-column="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataViz.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="191" column="45" lean-forward="true" selection-start-line="191" selection-start-column="45" selection-end-line="191" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1550591932166" expanded="true" signature="7585:7615" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataCenter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

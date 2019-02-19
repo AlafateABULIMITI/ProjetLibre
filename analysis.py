@@ -124,7 +124,6 @@ if __name__ == "__main__":
     df = dataCenter.cleanData(df, colslist)
     cols = df.columns.values.tolist()
     df.info()
-    print(cols)
 
     # 计算两条记录的2gram的余弦值
     algo = algoDis.AlgoDis()
@@ -169,31 +168,43 @@ if __name__ == "__main__":
     # df1=df.iloc[1]['labels']
     # print(df1)
     # dataCenter.seletPOIs(df)
+    # num_pois = 5
+    # num_divide_df = 100
+    #
+    # list_pois, pois = dataCenter.selectPOIsRandom(num_pois, df)
+    # df_copy = df
+    # df_copy = df_copy.drop(list_pois, axis=0)
+    # axe = dataViz.drawCircle(num_pois)
+    #
+    # for index, point in df_copy.iterrows():
+    #     dis = []
+    #     for i, poi in pois.iterrows():
+    #         dis.append(algo.calculateDis(poi, point))
+    #     dataViz.drawPoint(dis, num_pois, axe)
+    # plt.show()
+
+    # 并行！！！！
     num_pois = 5
     num_divide_df = 100
 
-    list_pois, pois = dataCenter.selectPOIsRandom(num_pois, df)
+    list_pois, pois = dataCenter.selectPOIs(df, num_pois)
     df_copy = df
     df_copy = df_copy.drop(list_pois, axis=0)
+
     axe = dataViz.drawCircle(num_pois)
 
-    for index, point in df_copy.iterrows():
-        dis = []
-        for i, poi in pois.iterrows():
-            dis.append(algo.calculateDis(poi, point))
-        dataViz.drawPoint(dis, num_pois, axe)
-    plt.show()
+    part_df = dataCenter.dividedf(df_copy, num_divide_df)
+    num = math.ceil(len(df_copy) / num_divide_df)
+    pool = multiprocessing.Pool(processes=4)
+    part = dataCenter.dividedf(df_copy, num_divide_df)
 
-    # 并行！！！！
-    # part_df = dataCenter.dividedf(df_copy, num_divide_df)
-    # num = math.ceil(len(df_copy) / num_divide_df)
-    # pool = multiprocessing.Pool(processes=4)
-    # part = dataCenter.dividedf(df_copy, num_divide_df)
-    # for i in range(num):
-    #     part_df = part.__next__()
-    #     pool.apply_async(dataViz.draw(part_df, axe, num_pois, pois), ((i % 4) + 1,))
-    #
-    # pool.close()
-    # pool.join()
-    # plt.show()
-    # print('END OF THE PROJECT')
+    for i in range(num):
+        part_df = part.__next__()
+        pool.apply_async(dataViz.draw(part_df, axe, num_pois, pois), ((i % 4) + 1,))
+
+    pool.close()
+    pool.join()
+    plt.show()
+    print('END OF THE PROJECT')
+
+    # dataCenter.selectPOIs(df)
