@@ -1,12 +1,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import algoDis
+import dataCenter
+import dataViz
 
 
 # classe pour visualiser l'analyse
 class DataViz:
+    dataCenter = dataCenter.DataCenter()
+    algo = algoDis.AlgoDis()
 
-    def draw(self, dataSet, POIs):
-        pass
+    def draw(self, df, axe, num_pois, pois):
+        for index, point in df.iterrows():
+            dis = [ ]
+            for i, poi in pois.iterrows():
+                dis.append(self.algo.calculateDis(poi, point))
+            self.drawPoint(dis, num_pois, axe)
 
     def save(self):
         pass
@@ -32,7 +41,7 @@ class DataViz:
         ax.axis('equal')
         return ax
 
-    def drawPoint(self, prlist, num_points):
+    def drawPoint(self, prlist, num_pois, axe, index=''):
         sumdis = sum(prlist)
         W = [ ]
         for dis in prlist:
@@ -43,10 +52,10 @@ class DataViz:
         o_x, o_y = (0., 0.)
 
         theta = np.arange(0, 2 * np.pi, 0.01)
-        for i in range(num_points):
-            p_x += W[ i ] * (o_x + r * np.cos((i / num_points) * 2 * np.pi + 0.5 * np.pi))
-            p_y += W[ i ] * (o_y + r * np.sin((i / num_points) * 2 * np.pi + 0.5 * np.pi))
+        for i in range(num_pois):
+            p_x += W[ i ] * (o_x + r * np.cos((i / num_pois) * 2 * np.pi + 0.5 * np.pi))
+            p_y += W[ i ] * (o_y + r * np.sin((i / num_pois) * 2 * np.pi + 0.5 * np.pi))
 
-        axe = self.DrawCircle(num_points)
+        # axe = self.DrawCircle(num_points)
+        plt.annotate(index, (p_x, p_y))
         axe.plot(p_x, p_y, 'mo')
-

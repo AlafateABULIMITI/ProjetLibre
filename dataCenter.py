@@ -3,6 +3,7 @@ from twoGrams import sorVec
 import pandas as pd
 import numpy as np
 from sklearn.cluster import KMeans
+import math
 
 
 # classe pour integrer
@@ -10,7 +11,7 @@ class DataCenter:
     algoDis = algoDis.AlgoDis()
 
     def cleanData(self, dataFrame, cols):
-        df = dataFrame[ cols ]
+        df = dataFrame[cols]
         return df
 
     def selectData(self, dataFrame):
@@ -37,7 +38,21 @@ class DataCenter:
             two_gram = self.algoDis.selectStr(row)
             data = np.append(data_num, two_gram)
             data = np.nan_to_num(data)
-            df_temp = pd.DataFrame([ data ])
-            num_df = pd.concat([ num_df, df_temp ], axis=0)
+            df_temp = pd.DataFrame([data])
+            num_df = pd.concat([num_df, df_temp], axis=0)
         return num_df
 
+    def selectPOIsRandom(self, num_POIs, df):
+        pois_df = pd.DataFrame()
+        POIs = np.random.randint(0, len(df) - 1, size=num_POIs)
+        for i in POIs:
+            df_temp = pd.DataFrame([df.iloc[i]])
+            pois_df = pd.concat([pois_df, df_temp], axis=0)
+        return POIs, pois_df
+
+    def dividedf(self, df, n):
+        num = math.ceil(len(df) / n)
+        for i in range(num):
+            start = i * n
+            end = (i + 1) * n if ((i + 1) * n) < len(df) else len(df) - 1
+            yield df.iloc[start:end]
