@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import multiprocessing
 import math
+import time
 
 # def separateDa
 # ta(data):
@@ -39,6 +40,9 @@ import math
 #     df['quantity(g)'] = df['quantity(g)'].replace('()', '', regex=True)
 #     df['quantity(g)'] = df['quantity(g)'].astype(float)
 
+def testFunction(i,d):
+    d[i]=i+100
+    print(d.values())
 
 # Main execution
 if __name__ == "__main__":
@@ -193,18 +197,46 @@ if __name__ == "__main__":
 
     axe = dataViz.drawCircle(num_pois)
 
-    part_df = dataCenter.dividedf(df_copy, num_divide_df)
-    num = math.ceil(len(df_copy) / num_divide_df)
-    pool = multiprocessing.Pool(processes=4)
-    part = dataCenter.dividedf(df_copy, num_divide_df)
+    print('k-means finit.')
+    # part_df = dataCenter.dividedf(df_copy, num_divide_df)
+    # num = math.ceil(len(df_copy) / num_divide_df)
+    # pool = multiprocessing.Pool(processes=4)
+    # part = dataCenter.dividedf(df_copy, num_divide_df)
 
-    for i in range(num):
-        part_df = part.__next__()
-        pool.apply_async(dataViz.draw(part_df, axe, num_pois, pois), ((i % 4) + 1,))
+    m=multiprocessing.Manager()
+    directory=m.dict()
 
-    pool.close()
-    pool.join()
+    timeStart=time.localtime()
+    jobs=[multiprocessing.Process(target=dataViz.draw,args=(df_copy.iloc[i*num_divide_df:i*num_divide_df+num_divide_df], axe, num_pois, pois,i,directory))
+          for i in range(4)
+        ]
+    # jobs = [multiprocessing.Process(target=testFunction,args=(i, directory))
+    #         for i in range(4)
+    #         ]
+    for j in jobs:
+        print('start')
+        j.start()
+    for j in jobs:
+        j.join()
+        print('join')
+        # p=multiprocessing.Process(target=dataViz.draw(),args=(part_df, axe, num_pois, pois))
+        # p.start()
+        # part_df = part.__next__()
+        # pool.apply_async(dataViz.draw(part_df, axe, num_pois, pois), ((i % 4) + 1,))
+    # pool.close()
+    # pool.join()
+
+
+    print('length: '+ str(len(directory)))
+    for key,value in directory.items():
+        # print('lala: ')
+        # print(value[0])
+        # print(value[1])
+        plt.plot(value[0],value[1],'mo')
     plt.show()
-    print('END OF THE PROJECT')
+    print('start: '+str(timeStart))
+    timeEnd = time.localtime()
+    print('END OF THE PROJECT: '+str(timeEnd))
 
     # dataCenter.selectPOIs(df)
+

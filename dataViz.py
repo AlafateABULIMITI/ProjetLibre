@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import algoDis
 import dataCenter
 import dataViz
+import time
+import pandas as pd
+import multiprocessing
 
 
 # classe pour visualiser l'analyse
@@ -10,12 +13,14 @@ class DataViz:
     dataCenter = dataCenter.DataCenter()
     algo = algoDis.AlgoDis()
 
-    def draw(self, df, axe, num_pois, pois):
+    def draw(self, df, axe, num_pois, pois,ind,directory):
         for index, point in df.iterrows():
             dis = [ ]
             for i, poi in pois.iterrows():
                 dis.append(self.algo.calculateDis(poi, point))
-            self.drawPoint(dis, num_pois, axe)
+            coordonnee=self.drawPoint(dis, num_pois, axe)
+            directory[ind+index] = coordonnee
+
 
     def save(self):
         pass
@@ -57,5 +62,11 @@ class DataViz:
             p_y += W[ i ] * (o_y + r * np.sin((i / num_pois) * 2 * np.pi + 0.5 * np.pi))
 
         # axe = self.DrawCircle(num_points)
-        plt.annotate(index, (p_x, p_y))
-        axe.plot(p_x, p_y, 'mo')
+
+        # plt.scatter(p_x,p_y)
+        plt.plot(p_x,p_y,'mo')
+        # plt.annotate(index, (p_x, p_y))
+        # axe.plot(p_x, p_y, 'mo')
+
+        coordonnee=[p_x,p_y]
+        return coordonnee
