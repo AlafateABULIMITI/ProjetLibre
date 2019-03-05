@@ -1,3 +1,4 @@
+import matplotlib
 import connDB
 import algoDis
 import dataCenter
@@ -10,87 +11,16 @@ import multiprocessing
 import math
 import time
 
-# def separateDa
-# ta(data):
-#     pass
-
-
-# def cleanData(df):
-#     # 1.quantitiy
-#     df.rename(columns={'quantity': 'quantity(g)'}, inplace=True)
-#     df['quantity(g)'].fillna('0', inplace=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('grammes', '', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('kg', '000', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('g', '', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace(' ', '', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('Vrac', '0', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('ml', '', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('capsules', '', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('l', '000', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace(
-#         '1.008000/12pain', '0', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('c000e', '000', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace(',', '.', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('4x5c000', '0', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('1bun', '0', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('e', '', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('r', '', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('c000', '000', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('(nto)', '', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].replace('()', '', regex=True)
-#     df['quantity(g)'] = df['quantity(g)'].astype(float)
-
 def testFunction(i,d):
     d[i]=i+100
     print(d.values())
 
+def showLabel(event):
+    if event.button=='down':
+        print('button down')
+
 # Main execution
 if __name__ == "__main__":
-    # file = 'en.openfoodfacts.org.products.csv'
-    # df = pd.DataFrame()
-    # with open(file)as f:
-    #     chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
-    #     for chunk in chunk_iter:
-    #         df = pd.concat([df, chunk])
-    #
-    # cols = df.columns.values.tolist()
-    # df.info()
-    # print(cols)
-
-    # openFoodCollection=connDB.connecDB()
-    # lines=openFoodCollection.find().count()
-    # print(str(lines)+" lines in the collection.")
-    #
-    # testObjects=openFoodCollection.find().limit(2)
-    # for object in testObjects:
-    #     print(object)
-
-    # connDB = connDB.ConnDB()
-    # myquery = {"countries": 'France'}
-    # testData = connDB.read_mongo(db="openFood", collection="products", query=myquery, nbLimit=5)
-    # dataItem1 = testData.iloc[0].values
-    # dataItem2 = testData.iloc[1].values
-    #
-    # # print(testData.iloc[0])
-    #
-    # algoDistance = algoDis.AlgoDis()
-    # list1, list2 = algoDistance.deleteNull(dataItem1, dataItem2)
-    # print(type(list1[0]))
-    # print(list1)
-    # selectNumeric=algoDistance.selectNumeric(list1)
-    # print(selectNumeric)
-    # for i in list1:
-    #     print(i)
-    # distance=algoDistance.calculateDis(data1=dataItem1,data2=dataItem2)
-    # print("la distance est: "+distance)
-
-    # file = 'fr.openfoodfacts.org.products.csv'
-    # df = pd.DataFrame()
-    # with open(file)as f:
-    #     chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000)
-    #     for chunk in chunk_iter:
-    #         df = pd.concat([ df, chunk ])
-
     # test专用
     file = 'test.csv'
     # file='D:\\pycharm_workspace\\projetLibre\\fileOrigin.csv'
@@ -100,6 +30,7 @@ if __name__ == "__main__":
         for chunk in chunk_iter:
             df = pd.concat([df, chunk])
 
+    # 正式的程序
     dataCenter = dataCenter.DataCenter()
     colslist = ['url', 'product_name', 'brands', 'categories', 'categories_fr', 'labels', 'allergens_fr', 'traces_fr',
                 'additives_n',
@@ -133,110 +64,76 @@ if __name__ == "__main__":
     # 计算两条记录的2gram的余弦值
     algo = algoDis.AlgoDis()
     dataViz = dataViz.DataViz()
-    # dis1 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 3 ])
-    # dis2 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 4 ])
-    # dis3 = algo.calculateDis(df.iloc[ 0 ], df.iloc[ 5 ])
-    # dis4 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 3 ])
-    # dis5 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 4 ])
-    # dis6 = algo.calculateDis(df.iloc[ 1 ], df.iloc[ 5 ])
-    # dis7 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 3 ])
-    # dis8 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 4 ])
-    # dis9 = algo.calculateDis(df.iloc[ 2 ], df.iloc[ 5 ])
-    # # 0 1 2 和 3 4 5 比较
 
-    # 点3 对权重W 的计算
-    # dis_list = [ ]
-    # dis_list.append(dis1)
-    # dis_list.append(dis4)
-    # dis_list.append(dis7)
-    # sumdis = dis1 + dis4 + dis7
-
-    # print('0')
-    # print(dis1)
-    # print(dis2)
-    # print(dis3)
-    # print('1')
-    # print(dis4)
-    # print(dis5)
-    # print(dis6)
-    # print('2')
-    # print(dis7)
-    # print(dis8)
-    # print(dis9)
-
-    # dataViz = dataViz.DataViz()
-    # axe = dataViz.DrawCircle(3)
-    # dataViz.DrawPoint(dis_list, 3)
-
-    # plt.show()
-    # df2=df.iloc[1]
-    # df1=df.iloc[1]['labels']
-    # print(df1)
-    # dataCenter.seletPOIs(df)
-    # num_pois = 5
-    # num_divide_df = 100
-    #
-    # list_pois, pois = dataCenter.selectPOIsRandom(num_pois, df)
-    # df_copy = df
-    # df_copy = df_copy.drop(list_pois, axis=0)
-    # axe = dataViz.drawCircle(num_pois)
-    #
-    # for index, point in df_copy.iterrows():
-    #     dis = []
-    #     for i, poi in pois.iterrows():
-    #         dis.append(algo.calculateDis(poi, point))
-    #     dataViz.drawPoint(dis, num_pois, axe)
-    # plt.show()
+    # 画图配置
+    fig1 = plt.figure(num='fig1')
+    # my_x_ticks = np.arange(-1, 1, 0.2)
+    # my_y_ticks = np.arange(-1, 1, 0.2)
+    # plt.xticks(my_x_ticks)
+    # plt.yticks(my_y_ticks)
+    r = 1
+    o_x, o_y = (0., 0.)
+    theta = np.arange(0, 2 * np.pi, 0.01)
+    x = o_x + r * np.cos(theta)
+    y = o_y + r * np.sin(theta)
+    plt.plot(x,y)
+    plt.axis('equal')
 
     # 并行！！！！
-    num_pois = 4
+    num_pois = 5
     num_divide_df = 100
 
+    # 开始选取参考点
+    timeStartKmeans=time.localtime()
+    print('start k-means: ' + str(timeStartKmeans))
     list_pois, pois = dataCenter.selectPOIs(df, num_pois)
+    list_pois_labels=[]
+    for index in list_pois:
+        list_pois_labels.append(df.iloc[index]['product_name'])
     df_copy = df
     df_copy = df_copy.drop(list_pois, axis=0)
-    num_divide_dfc= math.floor(len(df_copy)/num_pois)
+    num_divide_dfc= math.floor(len(df_copy)/4)
 
-    axe = dataViz.drawCircle(num_pois)
+    # 获取参考点的坐标和标签
+    poisCoord = dataViz.drawCircle(num_pois, list_pois_labels)
+    for index in range(len(poisCoord)):
+        # plt.annotate(poisCoord[index][2], (poisCoord[index][0], poisCoord[index][1]))
+        plt.text(poisCoord[index][0], poisCoord[index][1] + 0.01, poisCoord[index][2], ha='center', va='bottom', fontsize=9)
+        plt.plot(poisCoord[index][0], poisCoord[index][1], 'r*', label="point")
 
-    print('k-means finit.')
-    # part_df = dataCenter.dividedf(df_copy, num_divide_df)
-    # num = math.ceil(len(df_copy) / num_divide_df)
-    # pool = multiprocessing.Pool(processes=4)
-    # part = dataCenter.dividedf(df_copy, num_divide_df)
+    # plt.xlim(-1, 1)
+    # plt.ylim(-1, 1)
+    # plt.show()
+    timeEndKmeans = time.localtime()
+    print('k-means finit: '+ str(timeEndKmeans))
 
-    m=multiprocessing.Manager()
-    directory=m.dict()
-
+    # 开始计算所有点和参考点的距离
+    m = multiprocessing.Manager()
+    directory = m.dict()
     timeStart=time.localtime()
-    jobs=[multiprocessing.Process(target=dataViz.draw,args=(df_copy.iloc[i*num_divide_dfc:(i*num_divide_dfc+num_divide_dfc if i*num_divide_dfc+num_divide_dfc < len(df_copy) else len(df_copy)) ], axe, num_pois, pois,i,directory))
+    jobs=[multiprocessing.Process(target=dataViz.draw,args=(df_copy.iloc[i*num_divide_dfc:(i*num_divide_dfc+num_divide_dfc if i*num_divide_dfc+num_divide_dfc < len(df_copy) else len(df_copy)) ], num_pois, pois,i,directory))
           for i in range(4)
         ]
-    # jobs = [multiprocessing.Process(target=testFunction,args=(i, directory))
-    #         for i in range(4)
-    #         ]
+
     for j in jobs:
         print('start')
         j.start()
     for j in jobs:
         j.join()
         print('join')
-        # p=multiprocessing.Process(target=dataViz.draw(),args=(part_df, axe, num_pois, pois))
-        # p.start()
-        # part_df = part.__next__()
-        # pool.apply_async(dataViz.draw(part_df, axe, num_pois, pois), ((i % 4) + 1,))
-    # pool.close()
-    # pool.join()
 
-
+    # 开始画所有的点
     print('length: '+ str(len(directory)))
     for key,value in directory.items():
-        # print('lala: ')
-        # print(value[0])
-        # print(value[1])
         plt.plot(value[0],value[1],'mo')
+
+    plt.xlim(-1, 1)
+    plt.ylim(-1, 1)
+
+    fig1.canvas.mpl_connect('button_press_event',showLabel)
     plt.show()
-    print('start: '+str(timeStart))
+    # plt.savefig('testimage.svg')
+    print('start calculate coordinates: '+str(timeStart))
     timeEnd = time.localtime()
     print('END OF THE PROJECT: '+str(timeEnd))
 
