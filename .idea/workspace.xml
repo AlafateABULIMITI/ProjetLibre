@@ -13,6 +13,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ProjetLibre$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1551794694366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetLibre$dataViz.coverage" NAME="dataViz Coverage Results" MODIFIED="1551288115795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetLibre$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1551288435817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="671870513">
@@ -154,15 +155,11 @@
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="2305" />
-    <option name="height" value="1300" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="55" />
+    <option name="y" value="23" />
+    <option name="width" value="1225" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -310,6 +307,7 @@
       <workItem from="1550495990359" duration="11355000" />
       <workItem from="1550582486286" duration="7178000" />
       <workItem from="1550590585751" duration="1284000" />
+      <workItem from="1551794570851" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="connDBd">
       <created>1548419167554</created>
@@ -413,7 +411,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37523000" />
+    <option name="totallyTimeSpent" value="37533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -448,9 +446,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="connDBd" />
@@ -516,13 +511,7 @@
     <entry file="file://F:/informatique2/python-3.6.5/python/Lib/site-packages/pandas/core/frame.py" />
     <entry file="file://F:/informatique2/python-3.6.5/python/Lib/codecs.py" />
     <entry file="file:///usr/local/lib/python3.7/site-packages/pymongo/mongo_client.py" />
-    <entry file="file://F:/informatique2/python3.7/install/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="323" selection-start-line="323" selection-end-line="323" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://F:/informatique2/python3.7/install/Lib/codecs.py" />
     <entry file="file://$PROJECT_DIR$/fr.openfoodfacts.org.products.csv" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -545,7 +534,7 @@
         <state relative-caret-position="1235">
           <caret line="72" selection-start-line="72" selection-end-line="72" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -593,7 +582,7 @@
         <state relative-caret-position="162">
           <caret line="197" column="52" selection-start-line="197" selection-start-column="52" selection-end-line="197" selection-end-column="52" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
