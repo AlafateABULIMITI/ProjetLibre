@@ -93,6 +93,7 @@ if __name__ == "__main__":
 
     # test专用
     file = 'test.csv'
+    # file='D:\\pycharm_workspace\\projetLibre\\fileOrigin.csv'
     df = pd.DataFrame()
     with open(file)as f:
         chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
@@ -188,12 +189,13 @@ if __name__ == "__main__":
     # plt.show()
 
     # 并行！！！！
-    num_pois = 5
+    num_pois = 4
     num_divide_df = 100
 
     list_pois, pois = dataCenter.selectPOIs(df, num_pois)
     df_copy = df
     df_copy = df_copy.drop(list_pois, axis=0)
+    num_divide_dfc= math.floor(len(df_copy)/num_pois)
 
     axe = dataViz.drawCircle(num_pois)
 
@@ -207,7 +209,7 @@ if __name__ == "__main__":
     directory=m.dict()
 
     timeStart=time.localtime()
-    jobs=[multiprocessing.Process(target=dataViz.draw,args=(df_copy.iloc[i*num_divide_df:i*num_divide_df+num_divide_df], axe, num_pois, pois,i,directory))
+    jobs=[multiprocessing.Process(target=dataViz.draw,args=(df_copy.iloc[i*num_divide_dfc:(i*num_divide_dfc+num_divide_dfc if i*num_divide_dfc+num_divide_dfc < len(df_copy) else len(df_copy)) ], axe, num_pois, pois,i,directory))
           for i in range(4)
         ]
     # jobs = [multiprocessing.Process(target=testFunction,args=(i, directory))
