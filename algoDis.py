@@ -121,6 +121,9 @@ class AlgoDis:
         GramLabels = [ "categories_fr", "labels", "allergens_fr", "traces_fr", "additives_fr", "main_category_fr" ]
         vecFrame1 = [ ]
         vecFrame2 = [ ]
+
+        np.seterr(divide='ignore', invalid='ignore')
+
         for i in GramLabels:
             df1 = dataFrame1[ i ]
             if (isinstance(df1, list) == False and isinstance(df1, dict) == False and
@@ -151,5 +154,17 @@ class AlgoDis:
                     vecFrame2 = np.array(list(value2))
                 else:
                     vecFrame2 = vecFrame2 + np.array(list(value2))
-        cos = np.dot(vecFrame1, vecFrame2) / (np.linalg.norm(vecFrame1) * np.linalg.norm(vecFrame2))
+        if((np.linalg.norm(vecFrame1) * np.linalg.norm(vecFrame2))==0 and np.dot(vecFrame1, vecFrame2)==0):
+            cos=1
+        elif((np.linalg.norm(vecFrame1) * np.linalg.norm(vecFrame2))==0):
+            cos=0
+        else:
+            cos = np.dot(vecFrame1, vecFrame2) / (np.linalg.norm(vecFrame1) * np.linalg.norm(vecFrame2))
         return cos
+
+    def calculateDisDask(self, data1, data2):
+        distance=[]
+        for i, poi in data2.iterrows():
+            dis = 0.2 * self.euclideanDistance(data1, poi) +0.8 * self.calculate2GramCos(data1, poi)
+            distance.append(dis)
+        return distance

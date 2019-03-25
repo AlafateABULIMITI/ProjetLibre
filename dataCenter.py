@@ -1,10 +1,13 @@
 import algoDis
 from twoGrams import sorVec
 import pandas as pd
+import dask.dataframe as dd
 import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.metrics import pairwise_distances_argmin_min
 import math
+import dask_ml.cluster
+import dask_ml.datasets
 
 
 # classe pour integrer
@@ -58,3 +61,21 @@ class DataCenter:
             start = i * n
             end = (i + 1) * n if ((i + 1) * n) < len(df) else len(df) - 1
             yield df.iloc[start:end]
+
+    # 有问题
+    def daskSelectPOIs(self,df, n):
+        data = self.convertDataSet(df)
+        estimator = dask_ml.cluster.KMeans(n_clusters=n, n_jobs=n)
+        estimator.fit(data)  # 聚类
+        centroids = estimator.cluster_centers_  # 获取聚类中心
+        closest, _ = pairwise_distances_argmin_min(centroids, data)
+        pois_df = pd.DataFrame()
+        for i in closest:
+            df_temp = pd.DataFrame([df.iloc[i]])
+            pois_df = pd.concat([pois_df, df_temp], axis=0)
+        return closest, pois_df
+
+    #有问题
+    def daskSelectPOIsRandom(self, num_POIs, df):
+        POIs = np.random.randint(0, 2000000, size=num_POIs)
+        return POIs

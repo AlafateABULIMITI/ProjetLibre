@@ -4,6 +4,7 @@ import algoDis
 import dataCenter
 import dataViz
 import time
+import os
 import pandas as pd
 import multiprocessing
 
@@ -14,12 +15,17 @@ class DataViz:
     algo = algoDis.AlgoDis()
 
     def draw(self, df, num_pois, pois,ind,directory):
+        print('Run task %s (%s)...' % (ind, os.getpid()))
+        start = time.time()
         for index, point in df.iterrows():
             dis = [ ]
             for i, poi in pois.iterrows():
                 dis.append(self.algo.calculateDis(poi, point))
             coordonnee=self.drawPoint(dis, num_pois)
-            directory[ind+index] = coordonnee
+            directory[index] = coordonnee
+            # directory[ind+index] = [coordonnee[0],coordonnee[1],point['code']]
+        end = time.time()
+        print('Task %s runs %0.2f seconds.' % (ind, (end - start)))
 
     def save(self):
         pass

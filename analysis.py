@@ -15,24 +15,40 @@ def testFunction(i,d):
     d[i]=i+100
     print(d.values())
 
+annotations=[]
 def showLabel(event):
-    if event.button=='down':
-        print('button down')
+    # print(event.key)
+    visibility_changed = False
+    for point, annotation in annotations:
+        vector1 = np.array([point[0], point[1]])
+        vector2 = np.array([event.xdata, event.ydata])
+
+        should_be_visible = ((np.linalg.norm(vector1-vector2)<0.002) == True)
+
+        if should_be_visible != annotation.get_visible():
+            print(should_be_visible)
+            visibility_changed = True
+            annotation.set_visible(should_be_visible)
+
+    if visibility_changed:
+        plt.draw()
 
 # Main execution
 if __name__ == "__main__":
     # test专用
-    file = 'test.csv'
+    file='D:\\pycharm_workspace\\projetLibre\\fr.openfoodfacts.org.products.csv'
+    # file = 'test.csv'
     # file='D:\\pycharm_workspace\\projetLibre\\fileOrigin.csv'
     df = pd.DataFrame()
     with open(file)as f:
-        chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
+        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False,nrows=500)  # error_bad_lines=False low_memory=False
+        # chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
         for chunk in chunk_iter:
             df = pd.concat([df, chunk])
 
     # 正式的程序
     dataCenter = dataCenter.DataCenter()
-    colslist = ['url', 'product_name', 'brands', 'categories', 'categories_fr', 'labels', 'allergens_fr', 'traces_fr',
+    colslist = ['code','url', 'product_name', 'brands', 'categories', 'categories_fr', 'labels', 'allergens_fr', 'traces_fr',
                 'additives_n',
                 'additives_fr', 'main_category_fr', 'image_small_url', 'energy_100g', 'energy-from-fat_100g',
                 'fat_100g', 'saturated-fat_100g', 'butyric-acid_100g', 'caproic-acid_100g', 'caprylic-acid_100g',
@@ -63,7 +79,7 @@ if __name__ == "__main__":
 
     # 计算两条记录的2gram的余弦值
     algo = algoDis.AlgoDis()
-    dataViz = dataViz.DataViz()
+    data_Viz = dataViz.DataViz()
 
     # 画图配置
     fig1 = plt.figure(num='fig1')
@@ -86,7 +102,8 @@ if __name__ == "__main__":
     # 开始选取参考点
     timeStartKmeans=time.localtime()
     print('start k-means: ' + str(timeStartKmeans))
-    list_pois, pois = dataCenter.selectPOIs(df, num_pois)
+    # list_pois, pois = dataCenter.selectPOIs(df, num_pois)
+    list_pois, pois = dataCenter.selectPOIsRandom(num_pois,df)
     list_pois_labels=[]
     for index in list_pois:
         list_pois_labels.append(df.iloc[index]['product_name'])
@@ -95,7 +112,7 @@ if __name__ == "__main__":
     num_divide_dfc= math.floor(len(df_copy)/4)
 
     # 获取参考点的坐标和标签
-    poisCoord = dataViz.drawCircle(num_pois, list_pois_labels)
+    poisCoord = data_Viz.drawCircle(num_pois, list_pois_labels)
     for index in range(len(poisCoord)):
         # plt.annotate(poisCoord[index][2], (poisCoord[index][0], poisCoord[index][1]))
         plt.text(poisCoord[index][0], poisCoord[index][1] + 0.01, poisCoord[index][2], ha='center', va='bottom', fontsize=9)
@@ -110,30 +127,40 @@ if __name__ == "__main__":
     # 开始计算所有点和参考点的距离
     m = multiprocessing.Manager()
     directory = m.dict()
-    timeStart=time.localtime()
-    jobs=[multiprocessing.Process(target=dataViz.draw,args=(df_copy.iloc[i*num_divide_dfc:(i*num_divide_dfc+num_divide_dfc if i*num_divide_dfc+num_divide_dfc < len(df_copy) else len(df_copy)) ], num_pois, pois,i,directory))
-          for i in range(4)
-        ]
-
-    for j in jobs:
-        print('start')
-        j.start()
-    for j in jobs:
-        j.join()
-        print('join')
+    # timeStart=time.localtime()
+    # jobs=[multiprocessing.Process(target=dataViz.draw,args=(df_copy.iloc[i*num_divide_dfc:(i*num_divide_dfc+num_divide_dfc if i*num_divide_dfc+num_divide_dfc < len(df_copy) else len(df_copy)) ], num_pois, pois,i,directory))
+    #       for i in range(4)
+    #     ]
+    #
+    # for j in jobs:
+    #     print('start')
+    #     j.start()
+    # for j in jobs:
+    #     j.join()
+    #     print('join')
+    p = multiprocessing.Pool(4)
+    for i in range(4):
+        p.apply_async(data_Viz.draw, args=(df_copy.iloc[i * num_divide_dfc:(i * num_divide_dfc + num_divide_dfc if i * num_divide_dfc + num_divide_dfc < len(df_copy) else len(df_copy))], num_pois, pois, i, directory))
+    print('Waiting for all subprocesses done...')
+    p.close()
+    p.join()
+    print('All subprocesses done.')
 
     # 开始画所有的点
     print('length: '+ str(len(directory)))
     for key,value in directory.items():
-        plt.plot(value[0],value[1],'mo')
-
+        point=plt.plot(value[0],value[1],'mo',MarkerSize=8)
+        product_name=df.iloc[key]['product_name']
+        anno=plt.annotate(product_name,xy=(value[0], value[1]),xytext =(value[0]+0.0001, value[1]+0.0001))
+        anno.set_visible(False)
+        coordonnee=[value[0], value[1]]
+        annotations.append([coordonnee,anno])
     plt.xlim(-1, 1)
     plt.ylim(-1, 1)
 
     fig1.canvas.mpl_connect('button_press_event',showLabel)
     plt.show()
     # plt.savefig('testimage.svg')
-    print('start calculate coordinates: '+str(timeStart))
     timeEnd = time.localtime()
     print('END OF THE PROJECT: '+str(timeEnd))
 
