@@ -77,6 +77,12 @@ if __name__ == "__main__":
     cols = df.columns.values.tolist()
     df.info()
 
+    dfBrands=df['brands']
+    dfBrands=dfBrands.fillna(value='NoBrand',axis=0).unique()
+    # dfBrandsGroup=dfBrands.groupby('brands')
+    # dfBrandsNames=dfBrandsGroup.size().values
+    # dfBrandsNum=dfBrandsGroup.size().index
+
     # 计算两条记录的2gram的余弦值
     algo = algoDis.AlgoDis()
     data_Viz = dataViz.DataViz()
@@ -109,7 +115,7 @@ if __name__ == "__main__":
         list_pois_labels.append(df.iloc[index]['product_name'])
     df_copy = df
     df_copy = df_copy.drop(list_pois, axis=0)
-    num_divide_dfc= math.floor(len(df_copy)/4)
+    num_divide_dfc= math.floor(len(df_copy)/16)
 
     # 获取参考点的坐标和标签
     poisCoord = data_Viz.drawCircle(num_pois, list_pois_labels)
@@ -139,7 +145,7 @@ if __name__ == "__main__":
     #     j.join()
     #     print('join')
     p = multiprocessing.Pool(4)
-    for i in range(4):
+    for i in range(16):
         p.apply_async(data_Viz.draw, args=(df_copy.iloc[i * num_divide_dfc:(i * num_divide_dfc + num_divide_dfc if i * num_divide_dfc + num_divide_dfc < len(df_copy) else len(df_copy))], num_pois, pois, i, directory))
     print('Waiting for all subprocesses done...')
     p.close()
@@ -151,7 +157,9 @@ if __name__ == "__main__":
     for key,value in directory.items():
         point=plt.plot(value[0],value[1],'mo',MarkerSize=8)
         product_name=df.iloc[key]['product_name']
-        anno=plt.annotate(product_name,xy=(value[0], value[1]),xytext =(value[0]+0.0001, value[1]+0.0001))
+        product_brand = df.iloc[key]['brands']
+        product_info='name: '+str(product_name)+', brand: '+str(product_brand)
+        anno=plt.annotate(product_info,xy=(value[0], value[1]),xytext =(value[0]+0.0001, value[1]+0.0001))
         anno.set_visible(False)
         coordonnee=[value[0], value[1]]
         annotations.append([coordonnee,anno])
