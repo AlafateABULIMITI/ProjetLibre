@@ -1,10 +1,8 @@
 import numpy as np
-import Levenshtein as ls
 import operator
 import math
 import twoGrams
 import unicodedata
-
 
 class AlgoDis:
 
@@ -55,12 +53,6 @@ class AlgoDis:
         return data_num
 
     def selectStr(self, dataFrame1):
-        # data_str = [ ]
-        # for d in data:
-        #     if isinstance(d, str) or isinstance(d, list) or isinstance(d, dict):
-        #         data_str.append(d)
-        # data_str = np.array(data_str)
-        # print("test")
         GramLabels = [ "categories_fr", "labels", "allergens_fr", "traces_fr", "additives_fr", "main_category_fr" ]
         vecFrame1 = [ ]
         for i in GramLabels:
@@ -88,15 +80,6 @@ class AlgoDis:
         dis = np.linalg.norm(data1 - data2)
         return dis
 
-    def levenshteinDistance(self, data1, data2):
-        data1, data2 = self.deleteNull(data1, data2)
-        data2 = self.selectStr(data2)
-        data1 = self.selectStr(data1)
-
-        lsdistances = 0
-        for i in range(len(data1)):
-            lsdistances = ls.distance(data1[ i ], data2[ i ]) + lsdistances
-        return lsdistances
 
     def calculateDis(self, data1, data2):
         dis = 0.2 * self.euclideanDistance(data1, data2) +0.8 * self.calculate2GramCos(data1, data2)
@@ -162,9 +145,3 @@ class AlgoDis:
             cos = np.dot(vecFrame1, vecFrame2) / (np.linalg.norm(vecFrame1) * np.linalg.norm(vecFrame2))
         return cos
 
-    def calculateDisDask(self, data1, data2):
-        distance=[]
-        for i, poi in data2.iterrows():
-            dis = 0.2 * self.euclideanDistance(data1, poi) +0.8 * self.calculate2GramCos(data1, poi)
-            distance.append(dis)
-        return distance

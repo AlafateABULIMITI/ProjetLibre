@@ -1,12 +1,9 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import algoDis
 import dataCenter
 import dataViz
 import time
 import os
-import pandas as pd
-import multiprocessing
 
 
 # classe pour visualiser l'analyse
@@ -38,9 +35,6 @@ class DataViz:
         x = o_x + r * np.cos(theta)
         y = o_y + r * np.sin(theta)
 
-        # f, ax = plt.subplots()
-        # fig = plt.figure()
-        # axes = fig.add_subplot(1, 1, 1)
         poisCoord=[]
         # ax.plot(x, y)
         for i in range(num_points):
@@ -69,12 +63,15 @@ class DataViz:
             p_x += W[ i ] * (o_x + r * np.cos((i / num_pois) * 2 * np.pi + 0.5 * np.pi))
             p_y += W[ i ] * (o_y + r * np.sin((i / num_pois) * 2 * np.pi + 0.5 * np.pi))
 
-        # axe = self.DrawCircle(num_points)
-
-        # plt.scatter(p_x,p_y)
-        # plt.plot(p_x,p_y,'mo')
-        # plt.annotate(index, (p_x, p_y))
-        # axe.plot(p_x, p_y, 'mo')
 
         coordonnee=[p_x,p_y]
+        return coordonnee
+
+    def calculateLambda(self, data1, data2,num_pois):
+        distance=[]
+        data_viz=dataViz.DataViz()
+        for i, poi in data2.iterrows():
+            distance.append(self.algo.calculateDis(poi, data1))
+        coordonnee = self.drawPoint(distance, num_pois)
+        coordonnee.append(data1['product_name'])
         return coordonnee

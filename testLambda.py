@@ -1,7 +1,10 @@
+import matplotlib
+import connDB
 import algoDis
 import dataCenter
 import dataViz
 import pandas as pd
+import twoGrams
 import matplotlib.pyplot as plt
 import numpy as np
 import multiprocessing
@@ -38,7 +41,7 @@ if __name__ == "__main__":
     # file='D:\\pycharm_workspace\\projetLibre\\fileOrigin.csv'
     df = pd.DataFrame()
     with open(file)as f:
-        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False,nrows=10000)  # error_bad_lines=False low_memory=False
+        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False,nrows=500)  # error_bad_lines=False low_memory=False
         # chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
         for chunk in chunk_iter:
             df = pd.concat([df, chunk])
@@ -76,6 +79,9 @@ if __name__ == "__main__":
 
     dfBrands=df['brands']
     dfBrands=dfBrands.fillna(value='NoBrand',axis=0).unique()
+    # dfBrandsGroup=dfBrands.groupby('brands')
+    # dfBrandsNames=dfBrandsGroup.size().values
+    # dfBrandsNum=dfBrandsGroup.size().index
 
     # 计算两条记录的2gram的余弦值
     algo = algoDis.AlgoDis()
@@ -83,6 +89,10 @@ if __name__ == "__main__":
 
     # 画图配置
     fig1 = plt.figure(num='fig1')
+    # my_x_ticks = np.arange(-1, 1, 0.2)
+    # my_y_ticks = np.arange(-1, 1, 0.2)
+    # plt.xticks(my_x_ticks)
+    # plt.yticks(my_y_ticks)
     r = 1
     o_x, o_y = (0., 0.)
     theta = np.arange(0, 2 * np.pi, 0.01)
@@ -121,32 +131,25 @@ if __name__ == "__main__":
     print('k-means finit: '+ str(timeEndKmeans))
 
     # 开始计算所有点和参考点的距离
-    m = multiprocessing.Manager()
-    directory = m.dict()
-    p = multiprocessing.Pool(4)
-    for i in range(16):
-        p.apply_async(data_Viz.draw, args=(df_copy.iloc[i * num_divide_dfc:(i * num_divide_dfc + num_divide_dfc if i * num_divide_dfc + num_divide_dfc < len(df_copy) else len(df_copy))], num_pois, pois, i, directory))
-    print('Waiting for all subprocesses done...')
-    p.close()
-    p.join()
-    print('All subprocesses done.')
+    directoryTest=df_copy.apply(lambda x:algo.calculateLambda(x,list_pois,num_pois),axis=1)
 
     # 开始画所有的点
-    print('length: '+ str(len(directory)))
-    for key,value in directory.items():
-        point=plt.plot(value[0],value[1],'mo',MarkerSize=8)
-        product_name=df.iloc[key]['product_name']
-        product_brand = df.iloc[key]['brands']
-        product_info='name: '+str(product_name)+', brand: '+str(product_brand)
-        anno=plt.annotate(product_info,xy=(value[0], value[1]),xytext =(value[0]+0.0001, value[1]+0.0001))
-        anno.set_visible(False)
-        coordonnee=[value[0], value[1]]
-        annotations.append([coordonnee,anno])
-    plt.xlim(-1, 1)
-    plt.ylim(-1, 1)
-
-    fig1.canvas.mpl_connect('button_press_event',showLabel)
-    plt.show()
+    # print('length: '+ str(len(directory)))
+    # for key,value in directory.items():
+    #     point=plt.plot(value[0],value[1],'mo',MarkerSize=8)
+    #     product_name=df.iloc[key]['product_name']
+    #     product_brand = df.iloc[key]['brands']
+    #     product_info='name: '+str(product_name)+', brand: '+str(product_brand)
+    #     anno=plt.annotate(product_info,xy=(value[0], value[1]),xytext =(value[0]+0.0001, value[1]+0.0001))
+    #     anno.set_visible(False)
+    #     coordonnee=[value[0], value[1]]
+    #     annotations.append([coordonnee,anno])
+    # plt.xlim(-1, 1)
+    # plt.ylim(-1, 1)
+    #
+    # fig1.canvas.mpl_connect('button_press_event',showLabel)
+    # plt.show()
+    # plt.savefig('testimage.svg')
     timeEnd = time.localtime()
     print('END OF THE PROJECT: '+str(timeEnd))
 
