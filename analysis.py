@@ -30,6 +30,7 @@ def showLabel(event):
     if visibility_changed:
         plt.draw()
 
+
 # Main execution
 if __name__ == "__main__":
     # test专用
@@ -38,7 +39,7 @@ if __name__ == "__main__":
     # file='D:\\pycharm_workspace\\projetLibre\\fileOrigin.csv'
     df = pd.DataFrame()
     with open(file)as f:
-        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False,nrows=10000)  # error_bad_lines=False low_memory=False
+        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False,nrows=500)  # error_bad_lines=False low_memory=False
         # chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
         for chunk in chunk_iter:
             df = pd.concat([df, chunk])
@@ -110,13 +111,8 @@ if __name__ == "__main__":
     # 获取参考点的坐标和标签
     poisCoord = data_Viz.drawCircle(num_pois, list_pois_labels)
     for index in range(len(poisCoord)):
-        # plt.annotate(poisCoord[index][2], (poisCoord[index][0], poisCoord[index][1]))
         plt.text(poisCoord[index][0], poisCoord[index][1] + 0.01, poisCoord[index][2], ha='center', va='bottom', fontsize=9)
         plt.plot(poisCoord[index][0], poisCoord[index][1], 'r*', label="point")
-
-    # plt.xlim(-1, 1)
-    # plt.ylim(-1, 1)
-    # plt.show()
     timeEndKmeans = time.localtime()
     print('k-means finit: '+ str(timeEndKmeans))
 
@@ -133,6 +129,8 @@ if __name__ == "__main__":
 
     # 开始画所有的点
     print('length: '+ str(len(directory)))
+    print(str(time.localtime()))
+    print('All subprocesses done.')
     for key,value in directory.items():
         point=plt.plot(value[0],value[1],'mo',MarkerSize=8)
         product_name=df.iloc[key]['product_name']

@@ -19,7 +19,8 @@ class DataViz:
             for i, poi in pois.iterrows():
                 dis.append(self.algo.calculateDis(poi, point))
             coordonnee=self.drawPoint(dis, num_pois)
-            directory[index] = coordonnee
+            info='name: '+str(point['product_name'])+', brand: '+str(point['brands'])
+            directory[index] = [coordonnee[0],coordonnee[1],point['code'],info,point['brands']]
             # directory[ind+index] = [coordonnee[0],coordonnee[1],point['code']]
         end = time.time()
         print('Task %s runs %0.2f seconds.' % (ind, (end - start)))
@@ -40,12 +41,7 @@ class DataViz:
         for i in range(num_points):
             px = o_x + r * np.cos((i / num_points) * 2 * np.pi + 0.5 * np.pi)
             py = o_y + r * np.sin((i / num_points) * 2 * np.pi + 0.5 * np.pi)
-            # plt.annotate('POI' + str(i + 1), (px, py))
-            # plt.annotate(list_pois_labels[i], (px, py))
-            # plt.plot(px, py, 'r*', label="point")
             poisCoord.append([px,py,list_pois_labels[i]])
-        # ax.axis('equal')
-        # return ax,poisCoord
         return poisCoord
 
     def drawPoint(self, prlist, num_pois, index=''):
