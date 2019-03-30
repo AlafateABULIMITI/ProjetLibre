@@ -1,7 +1,5 @@
 # ProjetLibre
 
-直接运行testDraw文件  
-
 我用中文写了。数据集在此：https://world.openfoodfacts.org/
 
 首先这个分为两个步骤：
