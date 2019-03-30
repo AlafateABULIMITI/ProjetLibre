@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7721ff7d-9ac3-4bc2-8e4d-d05ab3e8adaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/testDraw.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algoDis.py" beforeDir="false" afterPath="$PROJECT_DIR$/algoDis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connDB.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/daskMapper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataCenter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataViz.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataViz.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reducer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testDebug.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twoGrams.py" beforeDir="false" afterPath="$PROJECT_DIR$/twoGrams.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,11 +14,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/ProjetLibre$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1553730906364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetLibre$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1553893412985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetLibre$daskMapper.coverage" NAME="daskMapper Coverage Results" MODIFIED="1553265915443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetLibre$mapper.coverage" NAME="mapper Coverage Results" MODIFIED="1553525766432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetLibre$pytest_in_testDebug_py.coverage" NAME="pytest in testDebug.py Coverage Results" MODIFIED="1553731044783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetLibre$dataViz.coverage" NAME="dataViz Coverage Results" MODIFIED="1551288115795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetLibre$testDraw.coverage" NAME="testDraw Coverage Results" MODIFIED="1553903154820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -45,7 +39,7 @@
     <session id="671870513">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.20" value="1" />
@@ -55,33 +49,34 @@
           <entry key="project.open.time.30" value="3" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.35" value="2" />
-          <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.36" value="2" />
+          <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.47" value="1" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="8" />
-          <entry key="py" value="6886" />
+          <entry key="py" value="8242" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="8" />
-          <entry key="Python" value="6886" />
+          <entry key="Python" value="8242" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="csv" value="18" />
-          <entry key="py" value="43" />
+          <entry key="csv" value="19" />
+          <entry key="py" value="52" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSV" value="18" />
-          <entry key="Python" value="43" />
+          <entry key="CSV" value="19" />
+          <entry key="Python" value="52" />
         </counts>
       </usages-collector>
     </session>
@@ -89,13 +84,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/analysis.py">
+        <entry file="file://$PROJECT_DIR$/testDraw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-907">
-              <caret line="77" column="61" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="61" />
+            <state relative-caret-position="2507">
+              <caret line="145" column="20" lean-forward="true" selection-start-line="145" selection-start-column="20" selection-end-line="145" selection-end-column="20" />
               <folding>
-                <element signature="e#1#15#0" expanded="true" />
-                <marker date="1553794791514" expanded="true" signature="264:780" ph="..." />
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,17 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataViz.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="18" selection-start-column="18" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/algoDis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1558">
-              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="290">
+              <caret line="22" column="94" selection-start-line="22" selection-start-column="94" selection-end-line="22" selection-end-column="94" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -125,10 +110,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataCenter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1121">
-              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="252">
+              <caret line="51" column="19" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="19" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/algoDis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1558">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -160,6 +157,7 @@
       <find>point</find>
       <find>ls</find>
       <find>levenshteinDistance</find>
+      <find>directory</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -181,8 +179,9 @@
         <option value="$PROJECT_DIR$/dataCenter.py" />
         <option value="$PROJECT_DIR$/twoGrams.py" />
         <option value="$PROJECT_DIR$/algoDis.py" />
-        <option value="$PROJECT_DIR$/dataViz.py" />
         <option value="$PROJECT_DIR$/analysis.py" />
+        <option value="$PROJECT_DIR$/dataViz.py" />
+        <option value="$PROJECT_DIR$/testDraw.py" />
       </list>
     </option>
   </component>
@@ -206,7 +205,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,6 +216,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -245,7 +244,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.testDebug">
+  <component name="RunManager" selected="Python.testDraw">
     <configuration name="2grams" type="PythonConfigurationType" factoryName="Python">
       <module name="ProjetLibre" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -282,28 +281,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="daskMapper" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ProjetLibre" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/daskMapper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -356,6 +333,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="testDraw" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ProjetLibre" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testDraw.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest in testDebug.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="ProjetLibre" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -376,17 +375,17 @@
       <item itemvalue="Python.2grams" />
       <item itemvalue="Python.analysis" />
       <item itemvalue="Python.mapper" />
-      <item itemvalue="Python.daskMapper" />
       <item itemvalue="Python tests.pytest in testDebug.py" />
       <item itemvalue="Python.testDebug" />
+      <item itemvalue="Python.testDraw" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.testDraw" />
+        <item itemvalue="Python.analysis" />
         <item itemvalue="Python.testDebug" />
         <item itemvalue="Python tests.pytest in testDebug.py" />
-        <item itemvalue="Python.analysis" />
         <item itemvalue="Python.mapper" />
-        <item itemvalue="Python.daskMapper" />
       </list>
     </recent_temporary>
   </component>
@@ -525,30 +524,39 @@
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="37533000" />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49878934" visible="true" weight="0.12466488" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49878934" visible="true" weight="0.12734585" />
       <window_info id="Structure" order="1" sideWeight="0.50121063" side_tool="true" weight="0.24262735" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32913166" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.40509915" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" weight="0.28611898" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.70174265" weight="0.3753541" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5991957" weight="0.3753541" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49932975" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.2680965" side_tool="true" visible="true" weight="0.19830029" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.7319035" visible="true" weight="0.19830029" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.40080428" side_tool="true" weight="0.28611898" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.73123324" visible="true" weight="0.17988668" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49865952" weight="0.30736545" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.22453083" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.25134048" />
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" x="0" y="0" width="257" height="577" id="Documentation" order="6" side_tool="true" weight="0.31565657" />
@@ -575,19 +583,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/analysis.py</url>
-          <line>118</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/testDraw.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/analysis.py</url>
-          <line>140</line>
-          <option name="timeStamp" value="33" />
+          <url>file://$PROJECT_DIR$/testDraw.py</url>
+          <line>98</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/analysis.py</url>
-          <line>77</line>
-          <option name="timeStamp" value="38" />
+          <url>file://$PROJECT_DIR$/testDraw.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -672,13 +680,7 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/dl_env/lib/python3.6/site-packages/sklearn/cluster/k_means_.py" />
-    <entry file="file://$PROJECT_DIR$/reducer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/reducer.py" />
     <entry file="file://F:/informatique2/python3.7/install/Lib/site-packages/dask/dataframe/io/csv.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -686,13 +688,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daskMapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/daskMapper.py" />
     <entry file="file://$PROJECT_DIR$/testheadn.csv">
       <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
@@ -708,39 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2071">
           <caret line="120" selection-start-line="120" selection-end-line="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.csv">
-      <provider selected="true" editor-type-id="csv-data-editor">
-        <state>
-          <format>
-            <csv-format name="Comma-separated (CSV)" id="Comma-separated (CSV)_id">
-              <data>
-                <record-format prefix="" suffix="" nullText="" quotationPolicy="as needed" valueSeparator="," recordSeparator="&#10;">
-                  <quotation>
-                    <quotes left="&quot;" right="&quot;" leftEscaped="&quot;&quot;" rightEscaped="&quot;&quot;" />
-                    <quotes left="'" right="'" leftEscaped="''" rightEscaped="''" />
-                  </quotation>
-                </record-format>
-              </data>
-            </csv-format>
-          </format>
-        </state>
-      </provider>
-      <provider editor-type-id="csv-text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="48" lean-forward="true" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-        </state>
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://F:/informatique2/python3.7/install/Lib/site-packages/pandas/core/generic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="1468" selection-start-line="1468" selection-end-line="1468" />
         </state>
       </provider>
     </entry>
@@ -779,20 +742,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testDebug.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="144" column="20" selection-end-line="154" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testNumba.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="126" column="55" selection-start-line="126" selection-start-column="55" selection-end-line="126" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/testDebug.py" />
+    <entry file="file://$PROJECT_DIR$/testNumba.py" />
     <entry file="file://$PROJECT_DIR$/testLambda.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2190">
@@ -800,36 +751,217 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="65" column="14" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret column="12" selection-start-column="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper.py" />
+    <entry file="file://$PROJECT_DIR$/connDB.py" />
     <entry file="file://$PROJECT_DIR$/twoGrams.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-855">
-          <folding>
-            <element signature="e#1#30#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-855" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.csv">
+      <provider editor-type-id="csv-data-editor">
+        <state>
+          <format>
+            <csv-format name="Comma-separated (CSV)" id="Comma-separated (CSV)_id">
+              <data>
+                <record-format prefix="" suffix="" nullText="" quotationPolicy="as needed" valueSeparator="," recordSeparator="&#10;">
+                  <quotation>
+                    <quotes left="&quot;" right="&quot;" leftEscaped="&quot;&quot;" rightEscaped="&quot;&quot;" />
+                    <quotes left="'" right="'" leftEscaped="''" rightEscaped="''" />
+                  </quotation>
+                </record-format>
+              </data>
+            </csv-format>
+          </format>
+        </state>
+      </provider>
+      <provider editor-type-id="csv-text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3">
+          <column index="0" width="100" />
+          <column index="1" width="100" />
+          <column index="2" width="100" />
+          <column index="3" width="100" />
+          <column index="4" width="100" />
+          <column index="5" width="100" />
+          <column index="6" width="100" />
+          <column index="7" width="100" />
+          <column index="8" width="100" />
+          <column index="9" width="100" />
+          <column index="10" width="100" />
+          <column index="11" width="100" />
+          <column index="12" width="100" />
+          <column index="13" width="100" />
+          <column index="14" width="100" />
+          <column index="15" width="100" />
+          <column index="16" width="100" />
+          <column index="17" width="100" />
+          <column index="18" width="100" />
+          <column index="19" width="100" />
+          <column index="20" width="100" />
+          <column index="21" width="100" />
+          <column index="22" width="100" />
+          <column index="23" width="100" />
+          <column index="24" width="100" />
+          <column index="25" width="100" />
+          <column index="26" width="100" />
+          <column index="27" width="100" />
+          <column index="28" width="100" />
+          <column index="29" width="100" />
+          <column index="30" width="100" />
+          <column index="31" width="100" />
+          <column index="32" width="100" />
+          <column index="33" width="100" />
+          <column index="34" width="100" />
+          <column index="35" width="100" />
+          <column index="36" width="100" />
+          <column index="37" width="100" />
+          <column index="38" width="100" />
+          <column index="39" width="100" />
+          <column index="40" width="100" />
+          <column index="41" width="100" />
+          <column index="42" width="100" />
+          <column index="43" width="100" />
+          <column index="44" width="100" />
+          <column index="45" width="100" />
+          <column index="46" width="100" />
+          <column index="47" width="100" />
+          <column index="48" width="100" />
+          <column index="49" width="100" />
+          <column index="50" width="100" />
+          <column index="51" width="100" />
+          <column index="52" width="100" />
+          <column index="53" width="100" />
+          <column index="54" width="100" />
+          <column index="55" width="100" />
+          <column index="56" width="100" />
+          <column index="57" width="100" />
+          <column index="58" width="100" />
+          <column index="59" width="100" />
+          <column index="60" width="100" />
+          <column index="61" width="100" />
+          <column index="62" width="100" />
+          <column index="63" width="100" />
+          <column index="64" width="100" />
+          <column index="65" width="100" />
+          <column index="66" width="100" />
+          <column index="67" width="100" />
+          <column index="68" width="100" />
+          <column index="69" width="100" />
+          <column index="70" width="100" />
+          <column index="71" width="100" />
+          <column index="72" width="100" />
+          <column index="73" width="100" />
+          <column index="74" width="100" />
+          <column index="75" width="100" />
+          <column index="76" width="100" />
+          <column index="77" width="100" />
+          <column index="78" width="100" />
+          <column index="79" width="100" />
+          <column index="80" width="100" />
+          <column index="81" width="100" />
+          <column index="82" width="100" />
+          <column index="83" width="100" />
+          <column index="84" width="100" />
+          <column index="85" width="100" />
+          <column index="86" width="100" />
+          <column index="87" width="100" />
+          <column index="88" width="100" />
+          <column index="89" width="100" />
+          <column index="90" width="100" />
+          <column index="91" width="100" />
+          <column index="92" width="100" />
+          <column index="93" width="100" />
+          <column index="94" width="100" />
+          <column index="95" width="100" />
+          <column index="96" width="100" />
+          <column index="97" width="100" />
+          <column index="98" width="100" />
+          <column index="99" width="100" />
+          <column index="100" width="100" />
+          <column index="101" width="100" />
+          <column index="102" width="100" />
+          <column index="103" width="100" />
+          <column index="104" width="100" />
+          <column index="105" width="100" />
+          <column index="106" width="100" />
+          <column index="107" width="100" />
+          <column index="108" width="100" />
+          <column index="109" width="100" />
+          <column index="110" width="100" />
+          <column index="111" width="100" />
+          <column index="112" width="100" />
+          <column index="113" width="100" />
+          <column index="114" width="100" />
+          <column index="115" width="100" />
+          <column index="116" width="100" />
+          <column index="117" width="100" />
+          <column index="118" width="100" />
+          <column index="119" width="100" />
+          <column index="120" width="100" />
+          <column index="121" width="100" />
+          <column index="122" width="100" />
+          <column index="123" width="100" />
+          <column index="124" width="100" />
+          <column index="125" width="100" />
+          <column index="126" width="100" />
+          <column index="127" width="100" />
+          <column index="128" width="100" />
+          <column index="129" width="100" />
+          <column index="130" width="100" />
+          <column index="131" width="100" />
+          <column index="132" width="100" />
+          <column index="133" width="100" />
+          <column index="134" width="100" />
+          <column index="135" width="100" />
+          <column index="136" width="100" />
+          <column index="137" width="100" />
+          <column index="138" width="100" />
+          <column index="139" width="100" />
+          <column index="140" width="100" />
+          <column index="141" width="100" />
+          <column index="142" width="100" />
+          <column index="143" width="100" />
+          <column index="144" width="100" />
+          <column index="145" width="100" />
+          <column index="146" width="100" />
+          <column index="147" width="100" />
+          <column index="148" width="100" />
+          <column index="149" width="100" />
+          <column index="150" width="100" />
+          <column index="151" width="100" />
+          <column index="152" width="100" />
+          <column index="153" width="100" />
+          <column index="154" width="100" />
+          <column index="155" width="100" />
+          <column index="156" width="100" />
+          <column index="157" width="100" />
+          <column index="158" width="100" />
+          <column index="159" width="100" />
+          <column index="160" width="100" />
+          <column index="161" width="100" />
+          <column index="162" width="100" />
+          <column index="163" width="100" />
+          <column index="164" width="100" />
+          <column index="165" width="100" />
+          <column index="166" width="100" />
+          <column index="167" width="100" />
+          <column index="168" width="100" />
+          <column index="169" width="100" />
+          <column index="170" width="100" />
+          <column index="171" width="100" />
+          <column index="172" width="100" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dataCenter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1121">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="252">
+          <caret line="51" column="19" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="19" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -839,27 +971,48 @@
     <entry file="file://$PROJECT_DIR$/algoDis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1558">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://F:/informatique2/python3.7/install/Lib/site-packages/pandas/core/generic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="351" selection-start-line="351" selection-end-line="351" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dataViz.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        <state relative-caret-position="290">
+          <caret line="22" column="94" selection-start-line="22" selection-start-column="94" selection-end-line="22" selection-end-column="94" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-907">
-          <caret line="77" column="61" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="61" />
+        <state relative-caret-position="261">
+          <caret line="107" column="36" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="36" />
           <folding>
-            <element signature="e#1#15#0" expanded="true" />
-            <marker date="1553794791514" expanded="true" signature="264:780" ph="..." />
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1553891772187" expanded="true" signature="264:781" ph="..." />
+            <marker date="1553891772187" expanded="true" signature="779:781" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testDraw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2507">
+          <caret line="145" column="20" lean-forward="true" selection-start-line="145" selection-start-column="20" selection-end-line="145" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
