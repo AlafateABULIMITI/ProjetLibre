@@ -8,7 +8,7 @@ import math
 import time
 import plotly as py
 import plotly.graph_objs as go
-
+import cleanBrand
 
 
 
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # file='D:\\pycharm_workspace\\projetLibre\\fileOrigin.csv'
     df = pd.DataFrame()
     with open(file)as f:
-        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False)  # error_bad_lines=False low_memory=False ,nrows=100
+        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False,nrows=10000)  # error_bad_lines=False low_memory=False ,nrows=100
         # chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
         for chunk in chunk_iter:
             df = pd.concat([df, chunk])
@@ -56,8 +56,11 @@ if __name__ == "__main__":
     cols = df.columns.values.tolist()
     df.info()
 
-    # dfBrands=df['brands']
-    df['brands']=df['brands'].fillna(value='NoBrand',axis=0)
+    clean_brand=cleanBrand.CleanBrand()
+    dfBrand1=clean_brand.getBrandsClean()
+    df['brand1']=dfBrand1
+
+    df['brand1']=df['brand1'].fillna(value='NoBrand',axis=0)
 
     # 计算两条记录的2gram的余弦值
     algo = algoDis.AlgoDis()
@@ -87,7 +90,7 @@ if __name__ == "__main__":
     # 开始计算所有点和参考点的距离
     m = multiprocessing.Manager()
     directory = m.dict()
-    p = multiprocessing.Pool(3)
+    p = multiprocessing.Pool(4)
     for i in range(16):
         p.apply_async(data_Viz.draw, args=(df_copy.iloc[i * num_divide_dfc:(i * num_divide_dfc + num_divide_dfc if i * num_divide_dfc + num_divide_dfc < len(df_copy) else len(df_copy))], num_pois, pois, i, directory))
     print('Waiting for all subprocesses done...')
@@ -97,8 +100,8 @@ if __name__ == "__main__":
 
     # 开始插入参考点
     for index in range(len(poisCoord)):
-        info = 'name: ' + str(df.iloc[list_pois_labels[index]]['product_name']) + ', brand: ' + str(df.iloc[list_pois_labels[index]]['brands'])
-        directory[list_pois_labels[index]]=[poisCoord[index][0], poisCoord[index][1], df.iloc[list_pois_labels[index]]['code'],info,df.iloc[list_pois_labels[index]]['brands']]
+        info = 'name: ' + str(df.iloc[list_pois_labels[index]]['product_name']) + ', brand: ' + str(df.iloc[list_pois_labels[index]]['brand1'])
+        directory[list_pois_labels[index]]=[poisCoord[index][0], poisCoord[index][1], df.iloc[list_pois_labels[index]]['code'],info,df.iloc[list_pois_labels[index]]['brand1']]
 
     print('length: '+ str(len(directory)))
     print(str(time.localtime()))
@@ -107,8 +110,16 @@ if __name__ == "__main__":
     # 开始画所有的点
     print('Begin to draw.')
     dfDirectory=pd.DataFrame.from_dict(data=directory,orient='index',columns=['px','py','code','info','brands'])
-    dfDirectory1=dfDirectory[dfDirectory['brands']=='NoBrand']
-    dfDirectory2 = dfDirectory[dfDirectory['brands'] != 'NoBrand']
+    groupBrands=dfDirectory.groupby(['brands']).size().reset_index(name='brandCounts').sort_values(by='brandCounts',ascending=False).head(5)
+    dfDirectory0=dfDirectory[dfDirectory['brands'] == groupBrands.iloc[0]['brands']]
+    dfDirectory1=dfDirectory[dfDirectory['brands'] == groupBrands.iloc[1]['brands']]
+    dfDirectory2=dfDirectory[dfDirectory['brands'] == groupBrands.iloc[2]['brands']]
+    dfDirectory3=dfDirectory[dfDirectory['brands'] == groupBrands.iloc[3]['brands']]
+    dfDirectory4=dfDirectory[dfDirectory['brands'] == groupBrands.iloc[4]['brands']]
+    dfDirectory5=dfDirectory[(dfDirectory['brands'] != groupBrands.iloc[0]['brands']) & (dfDirectory['brands'] != groupBrands.iloc[1]['brands'])
+                      & (dfDirectory['brands'] != groupBrands.iloc[2]['brands']) & (dfDirectory['brands'] != groupBrands.iloc[3]['brands'])
+                         & (dfDirectory['brands'] != groupBrands.iloc[4]['brands'])]
+    count5=len(df.index)-len(dfDirectory0.index)-len(dfDirectory1.index)-len(dfDirectory2.index)-len(dfDirectory3.index)-len(dfDirectory4.index)
     layout=go.Layout(
         title='OpenFood Analysis, Polytech Tours, 2019',
         shapes=[{
@@ -128,32 +139,72 @@ if __name__ == "__main__":
         height=600,
     )
     trace0 = go.Scatter(
-        x=dfDirectory1['px'],
-        y=dfDirectory1['py'],
-        text=dfDirectory['info'],
-        name='without brand',
+        x=dfDirectory0['px'],
+        y=dfDirectory0['py'],
+        text=dfDirectory0['info'],
+        name=str(groupBrands.iloc[0]['brands'])+' - count:'+str(groupBrands.iloc[0]['brandCounts']),
         mode='markers',
         marker=dict(
             color='#f90303',
         )
     )
     trace1 = go.Scatter(
-        x=dfDirectory2['px'],
-        y=dfDirectory2['py'],
-        text=dfDirectory['info'],
-        name='with brand',
+        x=dfDirectory1['px'],
+        y=dfDirectory1['py'],
+        text=dfDirectory1['info'],
+        name=str(groupBrands.iloc[1]['brands'])+' - count: '+str(groupBrands.iloc[1]['brandCounts']),
         mode='markers',
         marker=dict(
-            color='#008542',
+            color='#4a19e7',
         )
     )
-    data = [trace0,trace1]
+    trace2 = go.Scatter(
+        x=dfDirectory2['px'],
+        y=dfDirectory2['py'],
+        text=dfDirectory2['info'],
+        name=str(groupBrands.iloc[2]['brands'])+' - count: '+str(groupBrands.iloc[2]['brandCounts']),
+        mode='markers',
+        marker=dict(
+            color='#787f32', #olive-colored
+        )
+    )
+    trace3 = go.Scatter(
+        x=dfDirectory3['px'],
+        y=dfDirectory3['py'],
+        text=dfDirectory3['info'],
+        name=str(groupBrands.iloc[3]['brands'])+' - count: '+str(groupBrands.iloc[3]['brandCounts']),
+        mode='markers',
+        marker=dict(
+            color='#dbd310', #yellowish-green
+        )
+    )
+    trace4 = go.Scatter(
+        x=dfDirectory4['px'],
+        y=dfDirectory4['py'],
+        text=dfDirectory4['info'],
+        name=str(groupBrands.iloc[4]['brands'])+' - count: '+str(groupBrands.iloc[4]['brandCounts']),
+        mode='markers',
+        marker=dict(
+            color='#9f00ff', # violet-colored
+        )
+    )
+    trace5 = go.Scatter(
+        x=dfDirectory5['px'],
+        y=dfDirectory5['py'],
+        text=dfDirectory5['info'],
+        name='Other brands'+' - count: '+str(count5),
+        mode='markers',
+        marker=dict(
+            color='#008542', #green
+        )
+    )
+    data = [trace0,trace1,trace2,trace3,trace4,trace5]
     #greeny #008542
     fig = {
         'data': data,
         'layout': layout,
     }
-    py.offline.plot(fig, filename='openFoodResult2.html')
+    py.offline.plot(fig, filename='openFoodResult.html')
 
     timeEnd = time.localtime()
     print('END OF THE PROJECT: '+str(timeEnd))

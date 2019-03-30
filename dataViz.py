@@ -19,8 +19,8 @@ class DataViz:
             for i, poi in pois.iterrows():
                 dis.append(self.algo.calculateDis(poi, point))
             coordonnee=self.drawPoint(dis, num_pois)
-            info='name: '+str(point['product_name'])+', brand: '+str(point['brands'])
-            directory[index] = [coordonnee[0],coordonnee[1],point['code'],info,point['brands']]
+            info='name: '+str(point['product_name'])+', brand: '+str(point['brand1'])
+            directory[index] = [coordonnee[0],coordonnee[1],point['code'],info,point['brand1']]
             # directory[ind+index] = [coordonnee[0],coordonnee[1],point['code']]
         end = time.time()
         print('Task %s runs %0.2f seconds.' % (ind, (end - start)))
