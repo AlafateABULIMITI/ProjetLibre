@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # file='D:\\pycharm_workspace\\projetLibre\\fileOrigin.csv'
     df = pd.DataFrame()
     with open(file)as f:
-        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False,nrows=10000)  # error_bad_lines=False low_memory=False ,nrows=100
+        chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False)  # error_bad_lines=False low_memory=False ,nrows=100
         # chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
         for chunk in chunk_iter:
             df = pd.concat([df, chunk])
@@ -73,14 +73,14 @@ if __name__ == "__main__":
     # 开始选取参考点
     timeStartKmeans=time.localtime()
     print('choose POIs: ' + str(timeStartKmeans))
-    # list_pois, pois = dataCenter.selectPOIs(df, num_pois)
-    list_pois, pois = dataCenter.selectPOIsRandom(num_pois,df)
+    list_pois, pois = dataCenter.selectPOIs(df.iloc[1:5000], num_pois)
+    # list_pois, pois = dataCenter.selectPOIsRandom(num_pois,df)
     list_pois_labels=[]
     for index in list_pois:
         list_pois_labels.append(index)
     df_copy = df
     df_copy = df_copy.drop(list_pois, axis=0)
-    num_divide_dfc= math.floor(len(df_copy)/16)
+    num_divide_dfc= math.floor(len(df_copy)/64)
 
     # 获取参考点的坐标和标签
     poisCoord = data_Viz.drawCircle(num_pois, list_pois_labels)
@@ -90,8 +90,8 @@ if __name__ == "__main__":
     # 开始计算所有点和参考点的距离
     m = multiprocessing.Manager()
     directory = m.dict()
-    p = multiprocessing.Pool(4)
-    for i in range(16):
+    p = multiprocessing.Pool(3)
+    for i in range(64):
         p.apply_async(data_Viz.draw, args=(df_copy.iloc[i * num_divide_dfc:(i * num_divide_dfc + num_divide_dfc if i * num_divide_dfc + num_divide_dfc < len(df_copy) else len(df_copy))], num_pois, pois, i, directory))
     print('Waiting for all subprocesses done...')
     p.close()
@@ -135,8 +135,8 @@ if __name__ == "__main__":
                     'color': 'blue',
                 },
             }],
-        width=600,
-        height=600,
+        width=800,
+        height=800,
     )
     trace0 = go.Scatter(
         x=dfDirectory0['px'],

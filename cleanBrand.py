@@ -27,7 +27,7 @@ class CleanBrand:
         file='brandsClean1.csv'
         df = pd.DataFrame()
         with open(file)as f:
-            chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False,usecols=['brand1'],encoding='utf-8',nrows=10000)# error_bad_lines=False low_memory=False ,nrows=100
+            chunk_iter = pd.read_csv(file, sep='\t', iterator=True, chunksize=100000, low_memory=False,usecols=['brand1'],encoding='utf-8',nrows=100)# error_bad_lines=False low_memory=False ,nrows=100
             # chunk_iter = pd.read_csv(file, sep=',', iterator=True, chunksize=100000)
             for chunk in chunk_iter:
                 df = pd.concat([df, chunk])
