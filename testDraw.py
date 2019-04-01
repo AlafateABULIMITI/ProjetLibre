@@ -138,7 +138,7 @@ if __name__ == "__main__":
         width=800,
         height=800,
     )
-    trace0 = go.Scatter(
+    trace0 = go.Scattergl(
         x=dfDirectory0['px'],
         y=dfDirectory0['py'],
         text=dfDirectory0['info'],
@@ -148,7 +148,7 @@ if __name__ == "__main__":
             color='#f90303',
         )
     )
-    trace1 = go.Scatter(
+    trace1 = go.Scattergl(
         x=dfDirectory1['px'],
         y=dfDirectory1['py'],
         text=dfDirectory1['info'],
@@ -158,7 +158,7 @@ if __name__ == "__main__":
             color='#4a19e7',
         )
     )
-    trace2 = go.Scatter(
+    trace2 = go.Scattergl(
         x=dfDirectory2['px'],
         y=dfDirectory2['py'],
         text=dfDirectory2['info'],
@@ -168,7 +168,7 @@ if __name__ == "__main__":
             color='#787f32', #olive-colored
         )
     )
-    trace3 = go.Scatter(
+    trace3 = go.Scattergl(
         x=dfDirectory3['px'],
         y=dfDirectory3['py'],
         text=dfDirectory3['info'],
@@ -178,7 +178,7 @@ if __name__ == "__main__":
             color='#dbd310', #yellowish-green
         )
     )
-    trace4 = go.Scatter(
+    trace4 = go.Scattergl(
         x=dfDirectory4['px'],
         y=dfDirectory4['py'],
         text=dfDirectory4['info'],
@@ -188,7 +188,7 @@ if __name__ == "__main__":
             color='#9f00ff', # violet-colored
         )
     )
-    trace5 = go.Scatter(
+    trace5 = go.Scattergl(
         x=dfDirectory5['px'],
         y=dfDirectory5['py'],
         text=dfDirectory5['info'],
@@ -204,7 +204,7 @@ if __name__ == "__main__":
         'data': data,
         'layout': layout,
     }
-    py.offline.plot(fig, filename='openFoodResult.html')
+    py.offline.plot(fig, filename='WEBGL755205.html')
 
     timeEnd = time.localtime()
     print('END OF THE PROJECT: '+str(timeEnd))
